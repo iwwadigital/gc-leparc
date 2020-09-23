@@ -1,0 +1,53 @@
+.agendamento_area {
+  .list {
+    padding: 8px 0;
+    background: #fff;
+    border-radius: 1rem;
+    border: 1px solid rgba(#000, 0.15);
+    overflow: hidden;
+    color: $color-black-medium;
+  }
+
+  .row {
+    background: #fff;
+    align-items: center;
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+
+  .status {
+    text-transform: uppercase;
+    font-weight: 700;
+
+    &-confirmado {
+      color: $status-aberto;
+    }
+
+    &-analise {
+      color: $status-analise;
+    }
+
+    &-negado{
+      color: $status-fechado;
+    }
+
+    &-cancelado {
+      color: $status-cancelado;
+    }
+  }
+
+  .col {
+    padding: 4px 8px;
+    line-height: $line-height-small;
+    &:first-child {
+      text-align: right;
+      font-weight: 500;
+    }
+  }
+
+	.input-button {
+		background-color: $color-secondary;
+		width: 100%;
+		margin-top: 1rem;
+	}
+}

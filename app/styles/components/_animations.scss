@@ -1,0 +1,173 @@
+// Variables
+// ---------
+$animation-timing-function: cubic-bezier(.4,0,.2,1);
+$animation-duration: 800ms;
+
+// Keyframes
+// ---------
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50%); 
+  }
+  100% {
+    opacity: 1;
+    transform: none; 
+  } 
+}
+@keyframes slideInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%); 
+  }
+  100% {
+    opacity: 1;
+    transform: none; 
+  } 
+}
+@keyframes slideInleft {
+  0% {
+    opacity: 0;
+    transform: translateX(50%); 
+  }
+  100% {
+    opacity: 1;
+    transform: none; 
+  } 
+}
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%); 
+  }
+  100% {
+    opacity: 1;
+    transform: none; 
+  } 
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; 
+  }
+  100% {
+    opacity: 1; 
+  } 
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1; 
+    transform: none;
+  } 
+}
+
+@keyframes zoomReverseIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1; 
+    transform: none;
+  }
+}
+
+@keyframes flipInY {
+  0% {
+    opacity: 0; 
+    transform: rotateY(90deg);
+  }
+  100% {
+    opacity: 1; 
+    transform: none;
+  }
+}
+
+
+// Animations
+// ----------
+[data-animation] {
+  opacity: 0;
+  will-change: opacity, transform;
+  transform: translate3d(0, 0, 0);
+  animation-timing-function: $animation-timing-function;
+  animation-fill-mode: both;
+  animation-duration: $animation-duration;
+}
+
+// Disable animation of the childs
+// Disable animation in yourself
+.animations-disabled {
+  &, [data-animation] {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+
+// Slide Animations
+.slideInUp {
+  @extend [data-animation];
+  animation-name: slideInUp;
+}
+.slideInDown {
+  @extend [data-animation];
+  animation-name: slideInDown;
+}
+.slideInLeft {
+  @extend [data-animation];
+  animation-name: slideInleft;
+}
+.slideInRight {
+  @extend [data-animation];
+  animation-name: slideInRight;
+}
+
+
+// Fade Animations
+.fadeIn {
+  @extend [data-animation];
+  animation-name: fadeIn;
+}
+.fadeOut {
+  @extend [data-animation];
+  animation-name: fadeIn;
+  animation-direction: reverse;
+}
+
+
+// Zoom Animations
+.zoomIn {
+  animation-name: zoomIn;
+}
+.zoomOut {
+  @extend [data-animation];
+  animation-name: zoomIn;
+  animation-direction: reverse;
+}
+.zoomReverseIn {
+  @extend [data-animation];
+  animation-name: zoomReverseIn;
+}
+.zoomReverseOut {
+  @extend [data-animation];
+  animation-name: zoomReverseIn;
+  animation-direction: reverse;
+}
+
+
+// Flip Animations
+.flipInY {
+  @extend [data-animation];
+  animation-name: flipInY;
+}
+.flipOutY {
+  @extend [data-animation];
+  animation-name: flipInY;
+  animation-direction: reverse;
+}

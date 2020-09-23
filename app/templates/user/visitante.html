@@ -1,0 +1,61 @@
+<ion-view class="visitante">
+  <ion-content>
+
+    <div class="container">
+      <h4 class="view-title">Visitante</h4>
+
+      <div class="content list">
+
+        <div class="row" ng-if="visitanteCtrl.visitante">
+          <span class="label col col-33">Nome</span>
+          <span class="value col col-67">{{visitanteCtrl.visitante.nome}}</span>
+        </div>
+
+        <div class="row" ng-if="visitanteCtrl.visitante.data_visita.formatado">
+          <span class="label col col-33">Data da Visita</span>
+          <span class="value col col-67">{{visitanteCtrl.visitante.data_visita.formatado}}</span>
+        </div>
+
+        <div class="row" ng-if="visitanteCtrl.visitante.placa">
+          <span class="label col col-33">Placa</span>
+          <span class="value col col-67">{{visitanteCtrl.visitante.placa | carplate}}</span>
+        </div>
+
+        <div class="row" ng-if="visitanteCtrl.visitante.qtd_pessoas">
+          <span class="label col col-33">Qtd. de Pessoas</span>
+          <span class="value col col-67">{{visitanteCtrl.visitante.qtd_pessoas}}</span>
+        </div>
+
+        <div class="row" ng-if="visitanteCtrl.visitante.telefone">
+          <span class="label col col-33">Telefone</span>
+          <span class="value col col-67">
+            <a href="tel:{{visitanteCtrl.visitante.telefone}}">{{visitanteCtrl.visitante.telefone | tel}}</a>
+          </span>
+        </div>
+
+        <div class="row" ng-if="visitanteCtrl.visitante.email">
+          <span class="label col col-33">E-mail</span>
+          <span class="value col col-67">
+            <a href="mailto:{{visitanteCtrl.visitante.email}}">{{visitanteCtrl.visitante.email}}</a>
+          </span>
+        </div>
+
+        <div class="row" ng-if="visitanteCtrl.visitante.descricao">
+          <span class="label col col-33">Tipo</span>
+          <span class="value col col-67">{{visitanteCtrl.visitante.descricao}}</span>
+        </div>
+
+      </div>
+
+      <div ng-if="visitanteCtrl.visitante && !visitanteCtrl.visitante.confirmado">
+        <button class="input input-button cancel-button" ng-click="visitanteCtrl.deletar()">Cancelar</button>
+      </div>
+
+      <!-- <div class="item row to-bottom" ng-if="visitanteCtrl.visitante.confirmado">
+        <div class="label visitante-confirmado">O visitante já veio lhe visitar</div>
+      </div> -->
+
+    </div>
+
+  </ion-content>
+</ion-view>

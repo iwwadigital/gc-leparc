@@ -1,0 +1,27 @@
+<ion-view class="home">
+	<ion-content>
+
+		<div class="container">
+
+			<section ng-if="vm.recents.length">
+				<h4 class="view-title">Destaques</h4>
+				<div class="grid grid-cards">
+					<div class="grid--cell slideInUp" data-cell-tablet="3" ng-repeat="item in vm.recents | orderBy:'ordem_destaque' track by $index">
+						<card-2rows content="item" count="$index" image-default='appCtrl.appConfig.default_post'></card-2rows>
+					</div>
+				</div>
+			</section>
+
+			<section ng-if="vm.menus.length">
+				<h4 class="view-title slideInDown">Visite também</h4>
+				<circle-cards set="vm.menus"></circle-cards>
+			</section>
+
+			<br>
+
+		</div>
+
+		<ion-infinite-scroll ng-if="vm.hasMoreItems" on-infinite="vm.getDestaques()"></ion-infinite-scroll>
+
+	</ion-content>
+</ion-view>

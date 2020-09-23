@@ -1,0 +1,59 @@
+<ion-view class="visitantes">
+  <ion-content>
+    <div class="container">
+      <h4 class="view-title">Visitantes</h4>
+
+      <div class="content">
+
+        <div class="search-wrapper">
+          <div class="input-box input-box-composite">
+            <i class="icon ion-search"></i>
+            <input type="text" placeholder="Pesquisa de visitantes" class="input" ng-model="filter" ng-init="filter = ''">
+          </div>
+          <span class="add-icon ion-plus" data-ui-sref="app.visitante-novo"></span>
+        </div>
+
+        <div class="switch row">
+          <span class="switch-item col" ng-class="{'active': visitanteCtrl.confirmado === 0}" ng-click="visitanteCtrl.confirmado = 0; visitanteCtrl.loadVisitantes();">
+            Não confirmados
+          </span>
+          <span class="switch-item col" ng-class="{'active': visitanteCtrl.confirmado === 1}" ng-click="visitanteCtrl.confirmado = 1; visitanteCtrl.loadVisitantes();">
+            Confirmados
+          </span>
+        </div>
+      </div>
+
+      <div class="list list-inset" ng-show="visitanteCtrl.visitantes.length && visitanteCtrl.alreadyLoaded">
+        <div class="item" ng-repeat="visitante in visitanteCtrl.visitantes | filter:filter track by $index">
+          <div class="col col-66" ui-sref="app.visitante({id: visitante.id})">
+            <div class="nome">{{visitante.nome}}</div>
+            <div class="subitem data">
+              <i class="icon ion-android-calendar"></i>
+              {{visitante.data_visita.formatado}}
+            </div>
+            <div class="subitem tipo">
+              <i class="icon ion-android-person"></i>
+              {{visitante.descricao}}
+            </div>
+            <div class="subitem detalhes">
+              <i class="icon ion-android-arrow-dropright-circle"></i>
+              <b>VER DETALHES</b>
+            </div>
+          </div>
+
+          <div class="col col-33 option_box">
+            <!-- <i class="icon icon-box ion-close-round" ng-click="visitanteCtrl.deletar(visitante, $index)" ng-if="visitante.confirmado !== 1"></i> -->
+            <i class="icon icon-box ion-ios-copy-outline" ng-click="visitanteCtrl.duplicar(visitante)"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-results-found" ng-show="!(visitanteCtrl.visitantes | filter:filter).length && visitanteCtrl.alreadyLoaded">
+        <div class="fadein" ng-include="'templates/includes/icon-list-empty.svg'"></div>
+        <span class="slideup">Não foram encontrados resultados <span ng-if="filter.length > 0">para o filtro  <span class="filter" >{{filter}}</span></span></span>
+      </div>
+
+    </div>
+
+  </ion-content>
+</ion-view>

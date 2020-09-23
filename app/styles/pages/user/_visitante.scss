@@ -1,0 +1,146 @@
+.visitantes {
+
+  .date-wrapper {
+    position: relative;
+    display: flex;
+
+    .label {
+      position: absolute;
+      z-index: 2;
+      background: white;
+      top: calc(50% - 8px);
+      transform: translateY(-50%);
+      left: 1rem;
+      width: 50%;
+      color: $color-black-medium;
+      font-weight: 400;
+    }
+  }
+
+  .list-inset {
+    margin: 0;
+    border-radius: 1rem;
+    border: 1px solid rgba(#000, 0.15);
+    overflow: hidden;
+  }
+
+  .item {
+    padding: 0.25rem 0.5rem;
+    border-width: 0;
+    border-top: 1px solid rgba(#000, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-black-medium;
+    font-size: $font-size-small;
+
+    &:first-child {
+      border-top: none;
+    }
+
+    &.confirmado {
+      background-color: rgba($positive, 0.1);
+    }
+
+    .nome {
+      color: $color-primary;
+      margin-bottom: 4px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .icon {
+      margin-right: 8px;
+      color: $color-black-light;
+    }
+
+    .subitem {
+      margin: 2px 0;
+    }
+
+    .detalhes {
+      color: $color-secondary;
+      .icon {
+        color: inherit;
+      }
+    }
+
+    .option_box {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      .icon-box {
+        height: 48px;
+        width: 48px;
+        background: $color-secondary;
+        color: white;
+        border-radius: 100%;
+        font-size: 1.75em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: 0;
+      }
+    }
+  }
+
+  .label {
+    font-weight: bold;
+  }
+
+  .cancel-button {
+    margin-top: 20px;
+    background-color: $invalid-color !important;
+  }
+
+  .visitante-confirmado {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    color: white;
+  }
+
+  .to-bottom {
+    padding: 20px 0 !important;
+    background-color: $invalid-color;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .search-wrapper .input {
+    border: none;
+  }
+
+  a {
+    text-decoration:none;
+    color: $dark;
+  }
+}
+
+.visitante {
+  .list {
+    padding: 8px 0;
+    background: #fff;
+    border-radius: 1rem;
+    border: 1px solid rgba(#000, 0.15);
+    overflow: hidden;
+    color: $color-black-medium;
+  }
+  .row {
+    background: #fff;
+    align-items: center;
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+  .col {
+    padding: 4px 8px;
+    line-height: $line-height-small;
+    &:first-child {
+      text-align: right;
+      font-weight: 500;
+    }
+  }
+}

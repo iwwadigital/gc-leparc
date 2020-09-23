@@ -1,0 +1,58 @@
+<ion-view class="single classificado">
+	<ion-content>
+
+		<div class="info" ng-if="vm.classificado.id">
+      <h4 class="view-title">{{vm.classificado.titulo}}</h4>
+
+			<div class="details">
+				<div class="user" ng-if="vm.classificado.autor">
+					<img ng-src="{{vm.classificado.autor.imagem || appCtrl.appConfig.default_user}}" class="fadein delay-1 avatar avatar-small"/>
+					<span>{{vm.classificado.autor.nome}}</span>
+				</div>
+				<span ng-if="vm.classificado.autor.telefone">
+					<a ng-href="tel:{{vm.classificado.autor.telefone}}" class="detail">
+						<i class="icon ion-ios-telephone"></i>
+						{{vm.classificado.autor.telefone}}
+					</a>
+				</span>
+				<span ng-if="vm.classificado.autor.email">
+					<a href="mailto:{{vm.classificado.autor.email}}" class="detail">
+						<i class="icon ion-email"></i>
+						{{vm.classificado.autor.email}}
+					</a>
+				</span>
+				<span ng-if="vm.classificado.preco">
+					<i class="icon ion-cash"></i>
+					{{vm.classificado.preco | currency}}
+				</span>
+			</div>
+		</div>
+
+		<div class="top" ng-if="vm.slides.length > 0 && vm.classificado">
+	 		<ion-slide-box class="slider"
+				slide-interval="4000"
+				does-continue="true"
+				auto-play="true"
+				ng-if="vm.slides.length > 0">
+			    <ion-slide data-ng-repeat="foto in vm.slides track by $index" class="slide" style="background-image: url({{foto || appCtrl.appConfig.default_post}})">
+			    </ion-slide>
+			</ion-slide-box>
+		</div>
+
+		<div class="destaque" ng-if="vm.slides.length === 0 && vm.classificado.id">
+			<img ng-src="{{vm.classificado.imagem_destacada || appCtrl.appConfig.default_post}}">
+		</div>
+
+		<div class="container">
+			<p class="content" ng-bind-html="vm.classificado.conteudo"></p>
+		</div>
+
+		<div class="options">
+			<i class="icon icon-selection icon-selection-delete ion-trash-a" ng-if="vm.isOwner" ng-click="vm.deletar()"></i>
+			<i class="icon icon-selection icon-selection-edit ion-edit" ng-if="vm.isOwner" ui-sref="app.classificado_novo({id: vm.classificado.id})"></i>
+		</div>
+
+		<ion-infinite-scroll ng-if="vm.hasMoreItems"></ion-infinite-scroll>
+
+	</ion-content>
+</ion-view>

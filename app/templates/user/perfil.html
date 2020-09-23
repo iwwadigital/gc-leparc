@@ -1,0 +1,46 @@
+<ion-view class="perfil">
+	<ion-content>
+
+		<div class="top slidedown slow">
+			<span class="user-photo">
+				<img ng-src="{{perfilCtrl.session.user.imagem || appCtrl.appConfig.default_user}}"/>
+				<span class="icon-photo ion-android-camera" ng-click="perfilCtrl.updateAvatar()"></span>
+      </span>
+
+			<div class="item-usuario">
+        <span class="title" ng-if="perfilCtrl.session.user.nome">
+          {{perfilCtrl.session.user.nome}}
+        </span>
+        <span ng-if="perfilCtrl.session.user.email">
+          {{perfilCtrl.session.user.email}}
+        </span>
+        <span ng-if="perfilCtrl.session.user.telefone">
+          {{perfilCtrl.session.user.telefone | tel}}
+        </span>
+      </div>
+		</div>
+
+		<div class="bottom slideup slow">
+			<div class="item-moradias" ng-if="perfilCtrl.session.user.moradias.length > 0">
+				<span class="title">
+					<i class="icon ion-android-home"></i>
+					{{perfilCtrl.session.user.moradias.length > 1 ? 'Imóveis' : 'Imóvel'}}
+				</span>
+				<span class="moradia">
+					<ul class="list">
+						<li class="item" ng-repeat="moradia in perfilCtrl.session.user.moradias | orderBy:'torre' track by $index">
+							<span ng-if="moradia.conjunto">{{moradia.conjunto.titulo}}</span>
+							<span ng-if="moradia.tipo_moradia">({{moradia.tipo_moradia}}</span>
+							<span ng-if="moradia.identificador"> {{moradia.identificador}})</span>
+						</li>
+					</ul>
+				</span>
+      </div>
+
+      <div class="container">
+        <circle-cards set="perfilCtrl.options"></circle-cards>
+      </div>
+		</div>
+
+	</ion-content>
+</ion-view>

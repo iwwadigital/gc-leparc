@@ -1,0 +1,15 @@
+$color-primary: hsl(160, 50%, 30%);
+$color-primary-dark: darken($color-primary, 10%);
+$color-primary-light: lighten($color-primary, 10%);
+// $color-secondary: hsl(hue($color-primary), 30%, 50%); // Caso a cor secundaria seja a mesma que a primaria
+$color-secondary: hsl(40, 30%, 50%);
+$color-secondary-dark: darken($color-secondary, 10%);
+$color-secondary-light: lighten($color-secondary, 10%);
+
+$positive: $color-primary;
+$positive-darker: $color-primary-dark;
+$stable: $color-secondary;
+$stable-darker: $color-secondary-dark;
+
+$calm: #204da4;
+$assertive: #ef473a;

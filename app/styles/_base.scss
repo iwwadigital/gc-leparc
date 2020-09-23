@@ -1,0 +1,51 @@
+ul, ol {
+  &:not(:last-child) {
+    margin-bottom: 1.5em;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: $line-height;
+}
+
+p {
+  line-height: $line-height;
+  &:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
+}
+
+span {
+  line-height: $line-height;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1rem 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+svg {
+  fill: currentColor;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  &-cover {
+    height: 100%;
+    object-fit: cover;
+  }
+  &-contain {
+    height: 100%;
+    object-fit: contain;
+  }
+}

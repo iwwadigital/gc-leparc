@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title>App</title>
+  <link rel="manifest" href="manifest.json">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+  <link href="styles/style.css" rel="stylesheet">
+</head>
+
+<body ng-app="app" ng-cloak>
+  <ion-nav-view></ion-nav-view>
+
+  <script src="cordova.js"></script>
+  <!-- build:js scripts/main.min.js -->
+  <script src="scripts/main.js"></script>
+
+  <script src="bower_components/ionic/js/ionic.bundle.min.js"></script>
+  <script src="bower_components/ngCordova/dist/ng-cordova.min.js"></script>
+  <script src="bower_components/angular-input-masks/angular-input-masks-standalone.min.js"></script>
+  <script src="bower_components/angular-ui-mask/dist/mask.js"></script>
+  <script src="bower_components/onezone-datepicker/dist/onezone-datepicker.min.js"></script>
+
+  <script src="scripts/providers/onesignal.js"></script>
+
+  <script src="scripts/global.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/app-routes.js"></script>
+  <script src="scripts/app-config.js"></script>
+  <script src="scripts/theme-config.js"></script>
+
+  <script src="scripts/constants/session-const.js"></script>
+
+  <script src="scripts/services/ajax-svc.js"></script>
+  <script src="scripts/services/auth-svc.js"></script>
+  <script src="scripts/services/config-svc.js"></script>
+  <script src="scripts/services/login/login-svc.js"></script>
+  <script src="scripts/services/menu-svc.js"></script>
+  <script src="scripts/services/localstorage-svc.js"></script>
+  <script src="scripts/services/loader-svc.js"></script>
+  <script src="scripts/services/user/perfil-svc.js"></script>
+  <script src="scripts/services/user/visitante-svc.js"></script>
+  <script src="scripts/services/user/relatorio-acesso-svc.js"></script>
+  <script src="scripts/services/main/agendamentos-svc.js"></script>
+  <script src="scripts/services/main/classificados-svc.js"></script>
+  <script src="scripts/services/main/eventos-svc.js"></script>
+  <script src="scripts/services/main/forum-svc.js"></script>
+  <script src="scripts/services/main/informacoes-svc.js"></script>
+  <script src="scripts/services/main/midia-svc.js"></script>
+  <script src="scripts/services/main/notificacoes-svc.js"></script>
+  <script src="scripts/services/main/ouvidoria-svc.js"></script>
+  <script src="scripts/services/main/recent-posts-svc.js"></script>
+  <script src="scripts/services/main/telefones-uteis-svc.js"></script>
+  <script src="scripts/services/main/transparencias-svc.js"></script>
+  <script src="scripts/services/main/documentos-nao-auditados-svc.js"></script>
+
+  <script src="scripts/plugins/toaster-svc.js"></script>
+  <script src="scripts/plugins/photo-svc.js"></script>
+
+  <script src="scripts/providers/filters/angular-locale-pt-br.js"></script>
+  <script src="scripts/providers/filters/carplate.js"></script>
+  <script src="scripts/providers/filters/i18n.js"></script>
+  <script src="scripts/providers/filters/startsWith.js"></script>
+  <script src="scripts/providers/filters/telephone.js"></script>
+  <script src="scripts/providers/filters/trust-html-filter.js"></script>
+
+  <script src="scripts/directives/cards-dir.js"></script>
+  <script src="scripts/directives/file-upload.js"></script>
+  <script src="scripts/directives/search-dir.js"></script>
+
+  <script src="scripts/controllers/login/login-ctrl.js"></script>
+  <script src="scripts/controllers/login/login-info-ctrl.js"></script>
+  <script src="scripts/controllers/app-ctrl.js"></script>
+  <script src="scripts/controllers/home-ctrl.js"></script>
+  <script src="scripts/controllers/slideshow-ctrl.js"></script>
+  <script src="scripts/controllers/main/classificado-ctrl.js"></script>
+  <script src="scripts/controllers/main/classificado-novo-ctrl.js"></script>
+  <script src="scripts/controllers/main/classificados-ctrl.js"></script>
+  <script src="scripts/controllers/main/evento-ctrl.js"></script>
+  <script src="scripts/controllers/main/eventos-ctrl.js"></script>
+  <script src="scripts/controllers/main/forum-ctrl.js"></script>
+  <script src="scripts/controllers/main/forum-novo-post-ctrl.js"></script>
+  <script src="scripts/controllers/main/forum-post-ctrl.js"></script>
+  <script src="scripts/controllers/main/forum-regras-ctrl.js"></script>
+  <script src="scripts/controllers/main/informacao-ctrl.js"></script>
+  <script src="scripts/controllers/main/informacoes-ctrl.js"></script>
+  <script src="scripts/controllers/main/ouvidoria-novo-chamado-ctrl.js"></script>
+  <script src="scripts/controllers/main/ouvidoria-ocorrencia-ctrl.js"></script>
+  <script src="scripts/controllers/main/ouvidoria-ocorrencias-ctrl.js"></script>
+  <script src="scripts/controllers/main/telefones-uteis-ctrl.js"></script>
+  <script src="scripts/controllers/main/transparencia-ctrl.js"></script>
+  <script src="scripts/controllers/main/transparencias-ctrl.js"></script>
+  <script src="scripts/controllers/main/documento-nao-auditado-ctrl.js"></script>
+  <script src="scripts/controllers/main/documentos-nao-auditados-ctrl.js"></script>
+
+  <script src="scripts/controllers/user/agendamento-ctrl.js"></script>
+  <script src="scripts/controllers/user/agendamentos-ctrl.js"></script>
+  <script src="scripts/controllers/main/agenda-servicos-ctrl.js"></script>
+  <script src="scripts/controllers/user/alterar-senha.js"></script>
+  <script src="scripts/controllers/user/configuracoes-ctrl.js"></script>
+  <script src="scripts/controllers/user/editar-perfil-ctrl.js"></script>
+  <script src="scripts/controllers/user/notificacoes-ctrl.js"></script>
+  <script src="scripts/controllers/user/perfil-ctrl.js"></script>
+  <script src="scripts/controllers/user/visitante-ctrl.js"></script>
+  <script src="scripts/controllers/user/visitante-novo-ctrl.js"></script>
+  <script src="scripts/controllers/user/visitantes-ctrl.js"></script>
+  <!-- endbuild -->
+</body>
+</html>

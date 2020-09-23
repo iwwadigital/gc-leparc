@@ -1,0 +1,63 @@
+<ion-view class="agendamento_area">
+  <ion-content>
+
+    <div class="container">
+      <h4 class="view-title">Agendamento</h4>
+
+      <div class="content list">
+
+        <!-- <div class="row status status-{{agendamentoCtrl.agendamento.agendamento_status.titulo}}">
+          <i class="icon {{agendamentoCtrl.verifyIcon(agendamentoCtrl.agendamento.agendamento_status.titulo)}}"></i>
+          {{agendamentoCtrl.agendamento.agendamento_status.titulo}}
+        </div> -->
+
+        <span class="row ">
+          <span class="description col col-33">Status</span>
+          <span class="value col col-66 status status-{{agendamentoCtrl.agendamento.agendamento_status.titulo}}">{{agendamentoCtrl.agendamento.agendamento_status.titulo}}</span>
+        </span>
+
+        <span class="row">
+          <span class="description col col-33">Área</span>
+          <span class="value col col-66">{{agendamentoCtrl.agendamento.dependencia.titulo}}</span>
+        </span>
+          
+        <span class="row" ng-if="agendamentoCtrl.agendamento.dependencia.hora_fim_funcionamento">
+          <span class="description col col-33">Horario</span>
+          <span class="value col col-66">{{agendamentoCtrl.agendamento.data_inicio.timestamp | date:'dd/MM/y'}} - {{agendamentoCtrl.agendamento.data_inicio.timestamp | date:"HH:mm"}} as {{agendamentoCtrl.agendamento.data_fim.timestamp | date:"HH:mm"}}</span>
+        </span>
+
+        <span class="row" ng-if="!agendamentoCtrl.agendamento.dependencia.hora_fim_funcionamento">
+          <span class="description col col-33">Horario</span>
+          <span class="value col col-66">
+ {{agendamentoCtrl.agendamento.data_inicio.timestamp | date:'dd/MM/y'}} a partir de  {{agendamentoCtrl.agendamento.data_inicio.timestamp | date:"HH:mm"}}
+          </span>
+        </span>
+
+        <!-- <span class="row">
+          <span class="description col col-33">Hora de Início</span>
+          <span class="value col col-66">{{agendamentoCtrl.agendamento.data_inicio.timestamp | date:"hh:mm"}}</span>
+        </span> -->
+
+        <!-- <span class="row">
+          <span class="description col col-33">Término</span>
+          <span class="value col col-66">{{agendamentoCtrl.agendamento.data_fim.timestamp | date:'dd/MM/yy'}} - {{agendamentoCtrl.agendamento.data_fim.timestamp | date:"HH:mm"}}</span>
+        </span> -->
+
+        <!-- <span class="row">
+          <span class="description col col-33">Hora de Término</span>
+          <span class="value col col-66">{{agendamentoCtrl.agendamento.data_fim.timestamp | date:"hh:mm"}}</span>
+        </span> -->
+
+        <span class="row">
+          <span class="description col col-33">Descrição</span>
+          <span class="value col col-66">{{agendamentoCtrl.agendamento.descricao}}</span>
+        </span>
+      </div>
+
+      <button class="input input-button"
+      ng-click="agendamentoCtrl.cancelarAgendamento()"
+      ng-if="agendamentoCtrl.isCancelable">Cancelar Agendamento</button>
+
+    </div>
+  </ion-content>
+</ion-view>

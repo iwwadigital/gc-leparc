@@ -1,0 +1,29 @@
+.notificacoes {
+	.item {
+		color: $color-black-light;
+
+		.content {
+			color: $color-black-dark;
+			white-space: normal;
+			padding-bottom: 8px;
+			display: block;
+		}
+
+		.info {
+			display: flex;
+      flex-direction: column;
+
+      .icon {
+        margin-right: 8px;
+      }
+		}
+	}
+}
+
+@media screen and (max-width: 374px) {
+	.notificacoes {
+		.item .data {
+			margin-left: 0 !important;
+		}
+	}
+}

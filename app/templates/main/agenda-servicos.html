@@ -1,0 +1,65 @@
+<ion-view class="agenda">
+  <ion-content>
+    <div class="container">
+      <h4 class="view-title slidedown">Agendamento de Serviço</h4>
+
+      <form name="form">
+        <div class="select-wrapper" ng-if="agendaCtrl.user.moradias.length > 1">
+          <select ng-model="agendaCtrl.agendamento.moradia" class="filter input" ng-change="agendaCtrl.getDependencias()" ng-options="moradia as  moradia.conjunto.titulo + ' - ' + moradia.identificador for moradia in agendaCtrl.user.moradias" required>
+            <option value="" disabled>Selecione uma unidade</option>
+          </select>
+          <i class="icon ion-arrow-down-b"></i>
+        </div>
+
+        <div class="select-wrapper">
+          <select ng-model="agendaCtrl.agendamento.dependencia" class="filter input" ng-change='agendaCtrl.resetHorarios()'  ng-options="dependencia as dependencia.titulo for dependencia in agendaCtrl.dependencias" required>
+            <option value="" disabled>Selecione uma dependencia</option>
+          </select>
+          <i class="icon ion-arrow-down-b"></i>
+        </div>
+
+        <div class="observacoes slidedown" ng-if="agendaCtrl.agendamento.dependencia.regras_de_uso">
+          {{agendaCtrl.agendamento.dependencia.regras_de_uso}}
+        </div>
+        <div class="datepicker fadein" ng-if="agendaCtrl.agendamento.dependencia">
+          
+          <h6>Selecione a data</h6>
+        </div>
+        <div class="wrapper-calendar fadein" ng-if="agendaCtrl.agendamento.dependencia">   
+          
+            <onezone-datepicker  datepicker-object="onezoneDatepicker" style="margin-bottom: 15px">
+              
+            </onezone-datepicker>
+        </div>
+
+        <div class="select-wrapper fadein" ng-if="agendaCtrl.horariosDisponiveis.length">
+        <ion-list >
+          <ion-radio required  ng-model="agendaCtrl.agendamento.datas" ng-repeat="(key, horario) in agendaCtrl.horariosDisponiveis" ng-disabled="horario.naoDiponivel"  ng-value="{{horario}}"  >{{horario.horario}}</ion-radio>
+            
+        </ion-list>
+</div>
+
+        <div class="datepicker" ng-if="agendaCtrl.agendamento.dependencia">
+           <!--   <div class="input-wrapper">
+            <input type="datetime-local" ng-model="agendaCtrl.agendamento.data" class="item input date" step="60" required>
+          </div>
+        </div>
+
+        <div class="datepicker">
+          <h6>Data do Término</h6>
+          <div class="input-wrapper">
+            <input type="datetime-local" ng-model="agendaCtrl.agendamento.data_fim" class="item input date" step="60">
+          </div>
+        </div> -->
+
+        <textarea class="input textarea" ng-model="agendaCtrl.agendamento.descricao" placeholder="Descrição do agendamento"></textarea>
+
+
+       
+        <button ng-disabled="form.$invalid || !agendaCtrl.agendamento.datas.horario" class="input input-button validated-button" ng-click="agendaCtrl.enviarSolicitacao()">Salvar</button>
+      </form>
+
+     
+    </div>
+  </ion-content>
+</ion-view>

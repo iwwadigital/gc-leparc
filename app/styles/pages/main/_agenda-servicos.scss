@@ -1,0 +1,38 @@
+.agenda { 
+	.observacoes {
+	    padding: 10px;
+	    margin-bottom: 20px;
+	    font-size: 0.8em;
+	    color: $dark;
+	}
+
+	.radio-content {
+		overflow:hidden;
+		position: relative;
+	}
+
+	.item-radio {
+	  &:first-child{
+	 	 border-top-left-radius: 20px;
+   		 border-top-right-radius: 20px;
+	  }
+
+	  &:last-child{
+	 	 border-bottom-left-radius: 20px;
+   		 border-bottom-right-radius: 20px;
+	  }
+
+	  &[disabled]{
+	  	 background: #d4d4d4;
+	  	 &.item-radio .item-content {
+	  		 background: #d4d4d4;
+	  		 
+	  	 }
+	  }
+	
+	}
+	.item-radio .radio-icon {
+	    padding-top: 14px;
+        padding-right: 30px;
+	}
+}

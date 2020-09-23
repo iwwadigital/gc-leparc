@@ -1,0 +1,108 @@
+<ion-view class="ocorrencia-usuario">
+	<ion-content>
+    <div class="container">
+
+      <h4 class="view-title">Ocorrência</h4>
+
+      <div class="list list-inset informacoes">
+        <div class="item">
+          <div class="title">{{vm.ocorrencia.titulo}}</div>
+
+          <div class="row">
+            <div class="col col-33" ng-if="vm.ocorrencia.data_aberto.formatado">
+              Abertura
+            </div>
+            <div class="col col-66">
+              {{vm.ocorrencia.data_aberto.timestamp | date:'dd/MM/yy - HH:MM'}}
+            </div>
+          </div>
+
+          <div class="row" ng-if="vm.ocorrencia.data_fechado.formatado">
+            <div class="col col-33">
+              Fechamento
+            </div>
+            <div class="col col-66">
+              {{vm.ocorrencia.data_fechado.timestamp | date:'dd/MM/yy - HH:MM'}}
+            </div>
+          </div>
+
+          <div class="row" ng-if="vm.ocorrencia.data_ocorrencia.formatado">
+            <div class="col col-33">
+              Ocorrência
+            </div>
+            <div class="col col-66">
+              {{vm.ocorrencia.data_ocorrencia.timestamp | date:'dd/MM/yy - HH:MM'}}
+            </div>
+          </div>
+
+          <div class="row" ng-if="vm.ocorrencia.status">
+            <div class="col col-33">
+              Status
+            </div>
+            <div class="col col-66 status status-{{vm.ocorrencia.status | lowercase}}">
+              {{vm.ocorrencia.status}}
+            </div>
+          </div>
+        </div>
+
+        <div class="item content" ng-if="vm.ocorrencia.conteudo">
+          <b>Ocorrido:</b><br>
+          {{vm.ocorrencia.conteudo}}
+        </div>
+      </div>
+
+      <div class="list list-inset responsaveis" ng-if="vm.ocorrencia.responsaveis.length > 0">
+        <div class="item title">Responsáveis</div>
+        <div class="item">
+          <div class="subitem" ng-repeat="responsavel in vm.ocorrencia.responsaveis">{{responsavel.nome}}</div>
+        </div>
+      </div>
+
+      <div class="list list-inset" ng-if="vm.ocorrencia.midias.length > 0">
+        <div class="item title">Imagens</div>
+        <div class="item">
+          <div class="images-wrapper">
+            <img ng-src="{{appCtrl.appConfig.url + imagem.arquivo}}" class="image" ng-click="vm.selectedImage = imagem; modal.show()" ng-repeat="imagem in vm.ocorrencia.midias">
+          </div>
+        </div>
+      </div>
+
+      <section class="list list-inset section-feedback" ng-if="vm.ocorrencia.feedbacks.length > 0">
+        <div class="item title">Feedbacks</div>
+        <div class="item">
+          <div class="feedback" ng-repeat="feedback in vm.ocorrencia.feedbacks">
+            <p class="feedback-content">
+              {{feedback.conteudo}}
+            </p>
+            <div class="comment">
+              <!-- <img ng-src="{{feedback.autor.imagem}}" class="avatar avatar-micro"> -->
+              <span><b>{{feedback.autor.nome}}</b> ({{feedback.data_postagem.timestamp | date:'dd/MM/yy'}})</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="item" ng-if="appCtrl.appConfig.permissoes_usuario.pode_comentar_chamado">
+          <form name="form">
+            <textarea ng-model="vm.conteudo" class="input textarea" placeholder="Digite seu comentário" name="content" required></textarea>
+            <button class="input input-button button-small" ng-disabled="form.$invalid" ng-click="vm.comentar();">Comentar</button>
+          </form>
+        </div>
+      </section>
+       <button class="input input-button button-secondary" ng-click="vm.confirmarFinalizacao()" ng-if="!vm.ocorrencia.data_fechado">Finalizar ocorrência</button>
+
+      <script id="templates/modal.html" type="text/ng-template">
+        <ion-modal-view class="modal-image">
+          <ion-nav-bar>
+            <ion-nav-buttons side="right">
+              <button class="input input-button button-secondary" ng-click="modal.hide()"><i class="icon ion-android-close"></i></button>
+            </ion-nav-buttons>
+          </ion-nav-bar>
+          <ion-content>
+            <img ng-src="{{appCtrl.appConfig.url + vm.selectedImage.arquivo}}" class="modal-image">
+          </ion-content>
+        </ion-modal-view>
+      </script>
+
+    </div>
+  </ion-content>
+</ion-view>

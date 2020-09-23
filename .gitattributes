@@ -1,0 +1,7 @@
+config.xml merge=ours
+app/styles/_colors.scss merge=ours
+app/scripts/theme-config.js merge=ours
+app/images/ merge=ours
+app/images/*.* merge=ours
+resources/ merge=ours
+resources/*.* merge=ours

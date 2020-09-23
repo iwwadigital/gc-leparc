@@ -1,0 +1,121 @@
+.card {
+	margin: 0;
+	width: 100%;
+	box-shadow: 0 1px 3px rgba(#000, 0.2);
+
+	&-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.item-image {
+		width: 100%;
+		padding-bottom: percentage(9/16);
+		background-repeat: no-repeat;
+		background-size: cover;
+    background-position: center;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      object-fit: cover;
+    }
+	}
+
+	.bottom {
+		display: flex;
+		padding: 0.5rem 1rem;
+		.avatar-wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-right: 1rem;
+		}
+		.description {
+			display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+			overflow: hidden;
+			.title {
+				color: $color-primary-dark;
+				margin: 0;
+				width: 100%;
+        margin-bottom: 0.25rem;
+        line-height: calc(1em + 0.25rem);
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+			}
+			.categories {
+        display: flex;
+        align-items: center;
+				flex-wrap: wrap;
+				margin: -4px;
+			}
+			.category {
+        display: flex;
+        align-items: center;
+				padding: 4px;
+				font-size: 0.75rem;
+				line-height: $line-height-small;
+        color: $color-black-medium;
+
+        .icon {
+          margin-right: 2px;
+        }
+			}
+		}
+	}
+}
+
+// Circle Option
+.opcoes {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+
+  .opcao-wrapper {
+    display: block;
+    width: 72px;
+    margin: 0 0.5rem 1rem;
+    text-align: center;
+  }
+
+	.opcao {
+		$icon-size: 64px;
+
+    display: flex;
+    margin: 0 auto 0.5rem;
+    align-items: center;
+    justify-content: center;
+		color: #fff;
+		background: $color-primary;
+		width: $icon-size;
+		height: $icon-size;
+		border-radius: 50%;
+		font-size: 2rem;
+    box-shadow: rgba(#000, 0.3) 0 1px 3px;
+
+    span {
+    	color: $color-primary;
+    	font-size: 0.3em;
+    	display: block;
+    	margin-top: -20px;
+    	white-space: nowrap;
+    }
+  }
+
+  .label {
+    display: block;
+  	font-size: 8px;
+    font-weight: 500;
+    line-height: $line-height-small;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  	color: $color-secondary;
+  }
+}

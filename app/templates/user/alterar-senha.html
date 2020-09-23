@@ -1,0 +1,28 @@
+<ion-view class="alterar-senha">
+  <ion-content>
+    <div class="container">
+      <h4 class="view-title">Altere sua senha</h4>
+      <form name="form">
+        <input type="password" required class="input"
+        placeholder="Senha antiga" name="oldpas"
+        ng-model="alterarSenhaCtrl.oldpass"
+        ng-class="{'invalid' : form.oldpas.$invalid && !form.oldpas.$pristine}"/>
+
+        <input type="password" required class="input"
+        placeholder="Nova senha" name="newpas"
+        ng-model="alterarSenhaCtrl.newpass"
+        ng-class="{'invalid' : form.newpas.$invalid && !form.newpas.$pristine}"/>
+
+        <input type="password" required class="input"
+        placeholder="Repita a nova senha" name="newpasconf"
+        ng-model="alterarSenhaCtrl.newpassconf"
+        ng-class="{'invalid' : form.newpasconf.$invalid && !form.newpasconf.$pristine
+        || alterarSenhaCtrl.newpass !== alterarSenhaCtrl.newpassconf}"/>
+
+        <button class="input input-button validated-button"
+        ng-click="alterarSenhaCtrl.changePassword()"
+        ng-disabled="form.$invalid || alterarSenhaCtrl.newpass !== alterarSenhaCtrl.newpassconf">Alterar Senha</button>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

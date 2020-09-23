@@ -1,0 +1,67 @@
+<ion-view class="agendamentos">
+  <ion-content>
+    <div class="container">
+      <h4 class="view-title">Meus Agendamentos</h4>
+
+      <div class="search-wrapper">
+        <div class="input-box">
+          <i class="icon ion-search"></i>
+          <input class="input" type="text" placeholder="Pesquisa de agendamentos" ng-model="filter" ng-init="filter = ''">
+        </div>
+        <span class="add-icon ion-plus" data-ui-sref="app.agenda_servicos"></span>
+      </div>
+
+      <div class="list list-inset" ng-if="agendamentosCtrl.agendamentos.length && agendamentosCtrl.alreadyLoaded">
+
+        <div class="item" ng-repeat="agendamento in agendamentosCtrl.agendamentos | filter:filter track by $index">
+
+          <div class="col" ui-sref="app.agendamento({id: agendamento.id})">
+            <div class="nome">{{agendamento.dependencia.titulo}}</div>
+
+            <div class="subitem data" ng-if="(agendamento.periodicidade_ao_criar != '24') ||
+             (agendamento.periodicidade_ao_criar == '24' && (agendamento.data_fim.horaPadrao != '00:00' && agendamento.data_fim.horaPadrao != '23:59' ) )">
+            
+              <i class="icon ion-android-calendar"></i>
+               {{agendamento.data_inicio.timestamp | date:'dd/MM/y'}} - {{agendamento.data_inicio.timestamp | date:"HH:mm"}} às {{agendamento.data_fim.timestamp | date:"HH:mm"}}
+              
+            </div>
+
+             <div class="subitem data" ng-if="agendamento.periodicidade_ao_criar == '24' && (agendamento.data_fim.horaPadrao == '00:00' || agendamento.data_fim.horaPadrao == '23:59' )">
+              <i class="icon ion-android-calendar"></i>
+               {{agendamento.data_inicio.timestamp | date:'dd/MM/y'}} a partir das  {{agendamento.data_inicio.timestamp | date:"HH:mm"}}
+            </div>
+
+   
+
+                           
+
+            <!-- <div class="subitem data">
+              <i class="icon ion-android-calendar"></i> Até:
+              {{agendamento.data_fim.timestamp | date:'dd/MM/yy'}} - {{agendamento.data_fim.timestamp | date:"hh:mm"}}
+            </div> -->
+
+            <div class="subitem tipo">
+              <i class="icon {{agendamentosCtrl.verifyIcon(agendamento.agendamento_status.titulo)}}" ></i>
+              {{agendamento.agendamento_status.titulo | uppercase}}
+            </div>
+
+            <div class="subitem detalhes">
+              <i class="icon ion-android-arrow-dropright-circle"></i>
+              <b>VER DETALHES</b>
+            </div>
+          </div>
+
+          <!-- <div class="col col-33 option_box" ng-if="agendamento.agendamento_status_id != 1">
+            <i class="icon icon-box ion-close-round" ng-click="agendamentosCtrl.cancelar(agendamento, $index)" ></i>
+          </div> -->
+
+        </div>
+      </div>
+
+      <div class="no-results-found" ng-show="(agendamentosCtrl.agendamentos | filter:filter).length == 0 && agendamentosCtrl.alreadyLoaded">
+        <div class="fadein" ng-include="'templates/includes/icon-list-empty.svg'"></div>
+        <span class="slideup">Não foram encontrados resultados<span class="filter" ng-if="filter"> para o filtro {{filter}}</span></span>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

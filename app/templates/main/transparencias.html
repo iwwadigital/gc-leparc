@@ -1,0 +1,28 @@
+<ion-view class="transparencias">
+	<ion-content>
+
+		<div class="container">
+
+			<h4 class="view-title">Transparências</h4>
+
+			<search dataset="vm.categorias" datamodel="filter" father='vm'></search>
+
+			<br>
+
+			<div class="grid grid-cards">
+				<div class="grid--cell" data-cell-tablet="3" ng-repeat="item in vm.transparencias track by $index">
+					<card-2rows content="item" count="$index" default='appCtrl.appConfig.default_post'></card-2rows>
+				</div>
+			</div>
+
+			<div class="no-results-found" ng-show="!vm.transparencias.length && vm.alreadyLoaded">
+				<div class="fadein" ng-include="'templates/includes/icon-list-empty.svg'"></div>
+				<span class="slideup">Não foram encontrados resultados</span>
+			</div>
+
+		</div>
+
+		<ion-infinite-scroll ng-if="vm.hasMoreItems" on-infinite="vm.loadMore()"></ion-infinite-scroll>
+
+	</ion-content>
+</ion-view>

@@ -1,0 +1,11 @@
+.alterar-senha, .editar-perfil { 	
+	.input {
+		border: $border;
+	}
+}
+
+.editar-perfil {
+	.view-title {
+		margin-top: 0 !important;
+	}
+}

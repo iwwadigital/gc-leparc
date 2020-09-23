@@ -1,0 +1,74 @@
+// ==============
+// Main SCSS File
+// ==============
+
+// COMPASS
+// -------
+// @import "compass/css3";
+// @import "compass/reset";
+// @import "compass/typography/text/force-wrap";
+// @import "compass/utilities";
+
+// App Variables
+@import 'colors';
+@import 'variables';
+
+// IONIC
+// -----
+@import '../bower_components/ionic/scss/ionic';
+
+// SOCIAL SHARING
+// --------------
+// @import "external/social-sharing/social-sharing";
+
+// MAIN
+// ----
+@import 'base';
+@import 'typography';
+@import 'general';
+@import 'animations';
+@import 'components/animations';
+@import 'validations';
+@import 'inputs';
+
+@import 'mixins/mixins';
+
+@import "components/grid";
+@import "components/cards";
+@import "components/search";
+
+@import 'pages/side-menu';
+@import "pages/home";
+@import "pages/single";
+
+@import "pages/login/login";
+@import "pages/login/recuperar-senha";
+@import "pages/login/informacoes-login";
+
+@import 'pages/user/perfil';
+@import 'pages/user/notificacoes';
+@import 'pages/user/alterar-senha-e-editar-perfil';
+@import 'pages/user/agendamentos';
+@import 'pages/user/agendamento';
+@import 'pages/user/visitante';
+@import 'pages/user/configuracoes';
+
+@import "pages/main/agenda-servicos";
+@import 'pages/main/telefones-uteis';
+@import 'pages/main/ocorrencia-nova';
+@import 'pages/main/ocorrencias-usuario';
+@import 'pages/main/ocorrencia-usuario';
+@import 'pages/main/ouvidoria';
+@import 'pages/main/eventos';
+@import 'pages/main/evento';
+@import 'pages/main/informacoes';
+@import 'pages/main/informacao';
+@import 'pages/main/transparencias';
+@import 'pages/main/transparencia';
+@import 'pages/main/forum';
+@import 'pages/main/forum-regras';
+@import 'pages/main/forum-posts';
+@import 'pages/main/forum-novo-post';
+@import 'pages/main/classificados';
+@import 'pages/main/classificado';
+@import 'pages/main/classificado-novo';

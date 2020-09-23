@@ -1,0 +1,58 @@
+<ion-view class="single transparencia">
+	<ion-content>
+
+		<div class="info">
+			<h3 class="view-title">{{vm.documento_nao_auditado.titulo}}</h3>
+			<div class="details">
+				<span ng-if="vm.documento_nao_auditado">
+					<img ng-src="{{vm.transparencia.autor.imagem || appCtrl.appConfig.default_user}}">
+					<span class="author">{{vm.documento_nao_auditado.autor.nome.split(" ")[0]}}</span>
+				</span>
+
+				<span ng-if="vm.documento_nao_auditado.tipo_post" class="post_type">
+					<i class="icon ion-ios-copy"></i>
+					<span>{{vm.transparencia.tipo_post.titulo}}</span>
+				</span>
+			</div>
+		</div>
+
+		<div class="top" ng-if="vm.slides > 0">
+	 		<ion-slide-box class="slider"
+				slide-interval="4000"
+				does-continue="true"
+				auto-play="true"
+				ng-if="vm.slides.length > 0">
+			    <ion-slide
+			    	data-ng-repeat="foto in vm.slides track by $index"
+			    	class="slide"
+			    	style="background-image: url({{foto || appCtrl.appConfig.default_post}});">
+			    </ion-slide>
+			</ion-slide-box>
+		</div>
+
+		<div class="destaque" ng-if="vm.slides.length === 0 && vm.documento_nao_auditado">
+			<img src="{{vm.documento_nao_auditado.imagem_destacada || appCtrl.appConfig.default_post}}">
+		</div>
+
+		<div class="container">
+
+			<p class="content slideup delay-0" ng-bind-html="vm.documento_nao_auditado.conteudo"></p>
+
+			<div class="anexos">
+				<ion-list>
+					<ion-item ng-repeat="anexo in vm.anexos track by $index" class="item"
+						ng-click="appCtrl.openBrowser(anexo.arquivo)">
+						<a class="download">
+							<i class="icon ion-ios-cloud-download"></i>
+							<span class="title">{{anexo.descricao}}</span>
+						</a>
+					</ion-item>
+				</ion-list>
+			</div>
+
+		</div>
+
+		<ion-infinite-scroll ng-if="vm.hasMoreItems"></ion-infinite-scroll>
+
+	</ion-content>
+</ion-view>

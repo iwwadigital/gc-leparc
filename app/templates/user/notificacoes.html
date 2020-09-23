@@ -1,0 +1,44 @@
+<ion-view class="notificacoes" title="{{appCtrl.appConfig.view_title}}">
+	<ion-content>
+
+		<div class="container">
+
+			<h4 class="view-title">Minhas Notificações</h4>
+
+			<div class="switch row">
+				<span class="switch-item col" ng-class="{'active': !notificacoesCtrl.lidas}" ng-click="notificacoesCtrl.lidas = false">
+					<i class="icon ion-android-notifications"></i>
+					Não lidas
+				</span>
+				<span class="switch-item col" ng-class="{'active': notificacoesCtrl.lidas}" ng-click="notificacoesCtrl.lidas = true">
+					<i class="icon ion-android-notifications-off"></i>
+					Lidas
+				</span>
+			</div>
+
+			<div class="list list-inset">
+				<div class="item" ng-repeat="notificacao in notificacoesCtrl.notificacoes | filter:{lida:notificacoesCtrl.lidas} | orderBy:'-data_envio.timestamp' track by $index">
+					<span class="content">{{notificacao.conteudo}}</span>
+					<div class="info">
+						<span class="autor">
+							<i class="icon ion-android-person"></i>
+							{{notificacao.autor.nome}}
+						</span>
+						<span class="data">
+							<i class="icon ion-android-calendar"></i>
+							{{notificacao.data_envio.timestamp | date:'dd/MM/yy'}}
+							às {{notificacao.data_envio.hora.replace('h','').replace('min','')}}
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="no-results-found" ng-show="(notificacoesCtrl.notificacoes | filter:{lida:false}).length === 0 && notificacoesCtrl.alreadyLoaded && notificacoesCtrl.lidas === false">
+				<i class="ion-android-notifications-off fadein delay-1"></i>
+				<span class="slideup">Nenhuma notificação encontrada <span ng-if="filter.length > 0">para o filtro  <span class="filter" >{{filter}}</span></span></span>
+			</div>
+
+		</div>
+
+	</ion-content>
+</ion-view>

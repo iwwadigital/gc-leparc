@@ -1,0 +1,40 @@
+<ion-view class="eventos">
+	<ion-content>
+
+		<div class="container">
+
+			<h4 class="view-title">Eventos</h4>
+
+			<div class="wrapper" style="margin-bottom:10px;">
+				<i class="icon-select ion-arrow-down-b" ng-init="show_search = true" ng-click="show_search = !show_search">
+					</i>
+				<div class="filter-wrapper">
+					<select name="search" id="search2" ng-model="vm.date" class="filter" ng-change="vm.onChange()">
+							<option value="" disabled selected>Filtrar por período</option>
+							<option value="">Todos Eventos</option>
+							<option value="proximos">Próximos Eventos</option>
+							<option value="anteriores">Eventos Anteriores</option>
+						</select>
+				</div>
+			</div>
+
+			<br>
+
+			<div class="grid grid-cards">
+				<div class="grid--cell" data-cell-tablet="3" ng-repeat="item in vm.eventos track by $index">
+					<card-2rows content="item" count="$index" default='appCtrl.appConfig.default_post'>
+					</card-2rows>
+				</div>
+			</div>
+
+			<div class="no-results-found" ng-show="vm.eventos.length == 0 && vm.alreadyLoaded">
+        <div class="fadein" ng-include="'templates/includes/icon-list-empty.svg'"></div>
+				<span class="slideup">Não foram encontrados resultados</span>
+			</div>
+
+		</div>
+
+		<ion-infinite-scroll ng-if="vm.hasMoreItems" on-infinite="vm.loadMore()"></ion-infinite-scroll>
+
+	</ion-content>
+</ion-view>

@@ -1,0 +1,26 @@
+<ion-view class="forum-novo-post">
+	<ion-content>
+
+		<div class="container">
+
+			<h4 class="view-title">{{forumNovoPostCtrl.pageTitle}}</h4>
+
+			<form name="form">
+				<input required type="text" class="input" placeholder="Título do Post" ng-model="forumNovoPostCtrl.post.titulo" name="title" ng-class="{'invalid' : form.title.$invalid && !form.title.$pristine}"/>
+
+				<div class="select-wrapper">
+					<select required ng-model="forumNovoPostCtrl.post.tipo_post" class="filter input" name="category" ng-class="{'invalid' : form.category.$invalid && !form.category.$pristine}" ng-options="item as item.titulo for item in forumNovoPostCtrl.categorias track by item.id">
+						<option value="" disabled selected>Categoria</option>
+					</select>
+					<i class="icon ion-arrow-down-b"></i>
+				</div>
+
+				<textarea ng-model="forumNovoPostCtrl.post.conteudo" ng-bind-html="forumNovoPostCtrl.post.conteudo" class="input textarea" placeholder="Conteúdo da postagem" name="content" ng-class="{'invalid': form.content.$invalid && !form.content.$pristine}" required></textarea>
+
+				<button class="validated-button" ng-disabled="form.$invalid" ng-click="forumNovoPostCtrl.postar()">Salvar</button>
+			</form>
+
+		</div>
+
+	</ion-content>
+</ion-view>

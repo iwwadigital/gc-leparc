@@ -1,0 +1,23 @@
+<ion-view class="recuperar-senha">
+	<ion-content>
+		<div class="container">
+			<br>
+			<button class="button button-icon" ng-click="vm.back()">
+				<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+			</button>
+
+			<form name="form" ng-submit="vm.recoverPassword()">
+				<h4 class="view-title">Recuperar Senha</h4>
+
+				<div class="input-box" ng-class="{'invalid' : form.email.$invalid && !form.email.$pristine}">
+					<svg class="icon icon-email" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+					<input type="email" placeholder="E-mail" class="input" name="email" ng-model="vm.user.email" required>
+        </div>
+
+        <br>
+
+        <button type="submit" class="input input-button" ng-disabled="form.$invalid">Enviar senha</button>
+			</form>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,52 @@
+<ion-view class="telefones_uteis">
+	<ion-content>
+
+		<div class="container">
+      <h4 class="view-title">Telefones úteis</h4>
+
+      <div class="search-wrapper">
+        <div class="input-box input-box-composite">
+          <i class="icon ion-search"></i>
+          <input type="text"
+          placeholder="Pesquisa de telefones"
+          class="input"
+          ng-model="filter"
+          ng-init="filter = ''">
+        </div>
+      </div>
+
+      <div class="telefones-wrapper">
+        <div class="box" ng-repeat="contato in vm.contatos | filter:filter track by $index">
+          <div class="destaque" ng-if="contato.titulo">
+            <span>{{contato.titulo}}</span>
+          </div>
+
+          <div class="line" ng-repeat="telefone in contato.numero track by $index" ng-if="telefone">
+            <i class="icon ion-android-call"></i>
+            <a href="tel:{{telefone}}">{{telefone | tel}}</a>
+          </div>
+
+          <div class="line" ng-if="contato.ramal">
+            <i class="icon ion-android-call"></i>
+            <a>{{contato.ramal}}<small> (Ramal)</small></a>
+          </div>
+
+          <div class="line" ng-if="contato.email">
+            <i class="icon ion-android-mail"></i>
+            <a href="mailto:{{contato.email}}">{{contato.email}}</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-results-found" ng-show="(vm.contatos | filter:filter).length == 0">
+        <div class="fadein" ng-include="'templates/includes/icon-list-empty.svg'"></div>
+        <span class="slideup">Não foram encontrados resultados para o filtro <span class="filter">{{filter}}</span></span>
+      </div>
+
+    </div>
+
+
+		<ion-infinite-scroll ng-if="vm.hasMoreItems"></ion-infinite-scroll>
+
+	</ion-content>
+</ion-view>

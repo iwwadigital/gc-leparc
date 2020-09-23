@@ -1,0 +1,86 @@
+<ion-view class="classificado-novo">
+	<ion-content>
+		<div class="container">
+			<h4 class="view-title">Novo Classificado</h4>
+
+			<form name="form">
+				<input type="text"
+        ng-model="classificadoNovoCtrl.classificado.titulo"
+        placeholder="Nome do Produto *"
+        class="input"
+        required
+        name="titulo"
+        ng-class="{'invalid' : form.titulo.$invalid && !form.titulo.$pristine}" />
+
+				<input type="tel"
+        ng-model="classificadoNovoCtrl.classificado.preco"
+        placeholder="Preço *"
+        class="input"
+        ui-money-mask
+        required
+        name="preco"
+        ng-class="{'invalid' : form.preco.$invalid && !form.preco.$pristine}"/>
+
+				<div class="select-wrapper">
+					<select ng-model="classificadoNovoCtrl.classificado.tipo_post"
+          class="filter input"
+          required
+          ng-options="item as item.titulo for item in classificadoNovoCtrl.categorias track by item.id">
+          <option value="" disabled selected>Categoria do Produto *</option>
+        </select>
+        <i class="icon ion-arrow-down-b"></i>
+      </div>
+
+      <div class="switch row" ng-init="classificadoNovoCtrl.classificado.produtoNovo = true">
+        <span class="switch-item col" ng-class="{'active': classificadoNovoCtrl.classificado.produtoNovo}" ng-click="classificadoNovoCtrl.classificado.produtoNovo = true">
+          Novo
+        </span>
+        <span class="switch-item col" ng-class="{'active': !classificadoNovoCtrl.classificado.produtoNovo}" ng-click="classificadoNovoCtrl.classificado.produtoNovo = false">
+          Usado
+        </span>
+      </div>
+
+      <!-- <div ng-show="!classificadoNovoCtrl.classificado.produtoNovo">
+        <input type="text"
+        ng-model="classificadoNovoCtrl.classificado.usado"
+        placeholder="Tempo de uso do Produto"
+        class="input"
+        ng-required ="!classificadoNovoCtrl.classificado.produtoNovo"
+        name="tempoDeUso"
+        ng-class="{'invalid' : form.tempoDeUso.$invalid && !form.tempoDeUso.$pristine}">
+      </div> -->
+
+      <textarea class="input textarea"
+      ng-model="classificadoNovoCtrl.classificado.conteudo"
+      placeholder="Descrição do produto"></textarea>
+
+      <div class="upload">
+        <span class="wrapper" ng-click="classificadoNovoCtrl.select()">
+          <i class="add-image ion-plus" ng-class="{'add-image-disabled' : classificadoNovoCtrl.images.length === appCtrl.appConfig.max_fotos_upload_classificado}"></i>
+          <span class="label" ng-if="classificadoNovoCtrl.images.length === 0">Não há imagens selecionadas</span>
+          <span class="label" ng-if="classificadoNovoCtrl.images.length === 1">{{classificadoNovoCtrl.images.length}} imagem selecionada</span>
+          <span class="label" ng-if="classificadoNovoCtrl.images.length > 1"
+            ng-class="{'label-disabled' : classificadoNovoCtrl.images.length === appCtrl.appConfig.max_fotos_upload_classificado}" >
+            {{classificadoNovoCtrl.images.length}} imagens selecionadas
+          </span>
+        </span>
+        <div class="image-container">
+          <span class="image-wrapper fadein" id="preview-{{$index}}"
+          ng-repeat="image in classificadoNovoCtrl.images track by $index">
+          <img ng-src="{{appCtrl.appConfig.url + '/' + image.arquivo}}" class="image-preview">
+          <span class="image-remove ion-close-round"
+          ng-click="classificadoNovoCtrl.deselect($index)">
+        </span>
+      </span>
+    </div>
+  </div>
+
+  <button ng-class="{'disabled': form.$invalid}"
+  class="input input-button validated-button"
+  ng-click="classificadoNovoCtrl.salvarClassificado()">
+  Salvar
+</button>
+</form>
+</div>
+</ion-content>
+</ion-view>

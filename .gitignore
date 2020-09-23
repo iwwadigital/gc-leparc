@@ -1,0 +1,12 @@
+# Versão do GitIgnore para o App GlobalCond-Modelo
+
+# Pastas
+/node_modules/
+/.tmp/
+/platforms/
+/plugins/
+/app/bower_components/
+/www/
+
+# Arquivos
+**/.DS_Store

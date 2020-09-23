@@ -1,0 +1,9 @@
+// Vertical Gradient SASS Mixin
+@mixin gradient-vertical($start-color: #555, $end-color: #333, $start-percent: 0, $end-percent: 1) {
+	background: linear-gradient(rgba($start-color, $start-percent), rgba($end-color, $end-percent));
+}
+
+// Convert px to em SASS
+@function px2em ($font_size, $base_font_size: 13){
+  @return ($font_size / $base_font_size) + em
+}

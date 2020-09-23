@@ -1,0 +1,55 @@
+<ion-view class="forum-post">
+	<ion-content>
+
+		<div class="container">
+
+			<h4 class="view-title">{{forumPostCtrl.post.titulo}}</h4>
+
+			<div class="content">
+				<p class="post-author">
+					<span class="author-wrapper">
+						<img ng-src="{{forumPostCtrl.post.autor.imagem || appCtrl.appConfig.default_user}}" class="avatar avatar-small"/>
+						{{forumPostCtrl.post.autor.nome}}
+					</span>
+					<span class="post-date">
+						<i class="icon ion-clock"></i>
+						{{forumPostCtrl.post.data_postagem.formatado}}
+					</span>
+				</p>
+
+				<p class="post-content" ng-bind-html="forumPostCtrl.post.conteudo"></p>
+				<span class="post-edit" data-ui-sref="app.forum_novo_post({id: forumPostCtrl.post.id})" ng-if="forumPostCtrl.isAuthor">
+					<span>
+						<i class="icon ion-edit"></i>
+						Editar post
+					</span>
+					<span class="last-edit" ng-if="forumPostCtrl.post.data_ultima_edicao">(Última edição em {{forumPostCtrl.post.data_ultima_edicao | date:"d 'de' MMMM 'de' y"}})</span>
+				</span>
+			</div>
+
+			<div class="comments">
+				<div class="new-comment-container fadein" ng-if="appCtrl.Session.user.permissoes_usuario.pode_comentar_forum">
+					<form name="form">
+						<textarea ng-model="forumPostCtrl.comment" class="input textarea" placeholder="Conteúdo do comentário" name="content" ng-class="{'invalid' : form.content.$invalid && !form.content.$pristine}" required></textarea>
+
+						<button class="validated-button" ng-disabled="form.$invalid" ng-click="forumPostCtrl.comentar(); form.$setPristine();">
+							Postar
+						</button>
+					</form>
+				</div>
+
+				<ion-list>
+					<ion-item ng-repeat="comment in forumPostCtrl.post.comentarios track by $index" class="comments-list slideup delay-{{$index}}">
+						<span class="post-content">{{comment.conteudo}}</span>
+						<span class="author-content">
+							<img class="avatar avatar-small avatar-inline" ng-src="{{comment.autor.imagem || appCtrl.appConfig.default_user}}" />
+							<span class="post-author">{{comment.autor.nome}}</span>
+						</span>
+					</ion-item>
+				</ion-list>
+			</div>
+
+		</div>
+
+	</ion-content>
+</ion-view>

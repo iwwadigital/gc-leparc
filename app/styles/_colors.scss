@@ -1,0 +1,12 @@
+$color-primary: #01838b; // blue
+$color-primary-dark: darken($color-primary, 10%);
+$color-secondary: #B5943A; // steelblue
+$color-secondary-dark: darken($color-secondary, 10%);
+
+$positive: $color-primary;
+$positive-darker: $color-primary-dark;
+$stable: $color-secondary;
+$stable-darker: $color-secondary-dark;
+
+$calm: #204da4; // cor do switch da seleção de comentários
+$assertive: #ef473a;

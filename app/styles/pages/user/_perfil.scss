@@ -1,0 +1,121 @@
+.perfil {
+	.top {
+    display: flex;
+		align-items: center;
+    padding: 2rem 1rem 1rem;
+	}
+
+	.user-photo {
+		$size: 88px;
+		background-color: white;
+		height: $size;
+		width: $size;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+    position: relative;
+    margin-right: 1rem;
+
+    img {
+      border-radius: 50%;
+    }
+
+		.icon-photo {
+      $icon-size: 32px;
+      color:rgba(#fff, 0.9);
+      background-color: $color-secondary;
+      width: $icon-size;
+      height: $icon-size;
+      border-radius: 50%;
+      font-size: 1.125em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: -4px;
+      bottom: 0;
+      z-index: 2;
+      box-shadow: rgba(#000, 0.3) 0 1px 3px;
+		}
+  }
+
+  .item-usuario {
+    display: flex;
+    flex-direction: column;
+    font-size: $font-size-small;
+    color: $color-black-medium;
+
+    .title {
+      font-size: $font-size-large;
+      font-weight: 500;
+			color: $color-primary;
+    }
+  }
+
+	.bottom {
+		.title {
+      display: block;
+      margin-bottom: 4px;
+			color: $color-secondary;
+		}
+
+		.subtitle {
+			font-size: $font-size-small;
+		}
+
+    .item-moradias {
+      font-size: $font-size-small;
+      margin-top: 0.25rem;
+      color: $color-black-medium;
+			width: 100%;
+      margin-bottom: 1rem;
+      background: #fff;
+      border: 1px solid rgba(#000, 0.15);
+      border-width: 1px 0;
+      padding: 1rem;
+      color: $color-black-medium;
+
+      .item {
+        margin-top: 4px;
+        border: none;
+        padding: 0;
+        font-size: $font-size-small;
+      }
+		}
+
+		.ion-key:before {
+			transform: rotate(230deg);
+		}
+  }
+
+  .opcoes {
+    margin-top: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 540px) {
+	.perfil {
+		.user-photo {
+			$user-photo-size: 200px;
+			width: $user-photo-size;
+			height: $user-photo-size;
+		}
+
+		.icon-photo {
+			$icon-photo-size: 50px;
+			width: $icon-photo-size !important;
+			height: $icon-photo-size !important;
+		}
+
+		.bottom {
+			.opcao {
+				$option-size: 80px;
+				width: $option-size;
+				height: $option-size;
+				line-height: $option-size;
+				font-size: 2.5em;
+			}
+		}
+	}
+}

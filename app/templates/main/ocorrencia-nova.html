@@ -1,0 +1,64 @@
+<ion-view class="nova-ocorrencia">
+	<ion-content>
+
+		<div class="container">
+
+			<h4 class="view-title">Nova Ocorrência</h4>
+
+			<form name="form">
+				<div class="select-wrapper">
+					<select ng-model="vm.ocorrencia.tipo_ocorrencia" class="filter input" required ng-options="item as item.titulo for item in vm.tipos_ocorrencias">
+						<option value="" disabled selected>Tipo de ocorrência</option>
+					</select>
+					<i class="icon ion-arrow-down-b"></i>
+				</div>
+
+				<!-- <div class="select-wrapper">
+					<select ng-model="vm.ocorrencia.dependencia" class="filter input" required ng-options="item as item.titulo for item in vm.area_servico">
+						<option value="" disabled selected>Área em que houve a ocorrência</option>
+					</select>
+					<i class="icon ion-arrow-down-b"></i>
+				</div> -->
+
+				<div class="select-wrapper">
+					<select ng-model="vm.ocorrencia.assunto" class="filter input" required ng-options="item as item.titulo for item in vm.assunto">
+						<option value="" disabled selected>Assunto</option>
+					</select>
+					<i class="icon ion-arrow-down-b"></i>
+				</div>
+
+				<div class="datepicker">
+					<h6>Data e Hora da Ocorrência</h6>
+
+					<div class="input-wrapper">
+						<input type="datetime-local" ng-model="vm.ocorrencia.data" class="input date" step="60">
+					</div>
+				</div>
+
+				<textarea class="input textarea" ng-model="vm.ocorrencia.descricao" placeholder="Descrição do ocorrido" required></textarea>
+
+				<div class="upload">
+					<span class="wrapper" ng-click="vm.select()">
+						<i class="add-image ion-plus" ng-class="{'add-image-disabled' : vm.ocorrencia.images.length === appCtrl.appConfig.max_fotos_upload_ouvidoria}"></i>
+						<span class="label" ng-if="vm.ocorrencia.images.length === 0">Não há imagens selecionadas</span>
+						<span class="label" ng-if="vm.ocorrencia.images.length === 1">{{vm.ocorrencia.images.length}} imagem selecionada</span>
+						<span class="label" ng-if="vm.ocorrencia.images.length > 1" ng-class="{'label-disabled' : vm.ocorrencia.images.length === appCtrl.appConfig.max_fotos_upload_ouvidoria}" >
+							{{vm.ocorrencia.images.length}} imagens selecionadas
+						</span>
+					</span>
+					<div class="image-container">
+						<span class="image-wrapper fadein" id="preview-{{$index}}" ng-repeat="image in vm.ocorrencia.images track by $index">
+							<img ng-src="{{image.arquivo}}" class="image-preview" />
+							<span class="image-remove ion-close-round" ng-click="vm.deselect($index)">
+							</span>
+						</span>
+					</div>
+				</div>
+
+				<button class="input validated-button input-button" ng-disabled="form.$invalid" ng-click="vm.createOcorrencia()">Salvar</button>
+			</form>
+
+		</div>
+
+	</ion-content>
+</ion-view>

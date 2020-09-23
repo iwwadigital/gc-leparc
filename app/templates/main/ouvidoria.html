@@ -1,0 +1,25 @@
+<ion-view class="ouvidoria">
+	<ion-content>
+
+		<div class="container">
+
+			<h4 class="view-title">Ouvidoria</h4>
+
+			<div class="controls">
+				<button class="input input-button" ui-sref="app.ocorrencia_nova">
+					<i class="icon ion-plus-circled"></i>
+					Criar Ocorrência
+				</button>
+
+				<button class="input input-button button-secondary" ui-sref="app.ocorrencias_usuario">
+					<i class="icon ion-chatbubbles"></i>
+					Minhas Ocorrências
+				</button>
+			</div>
+
+      <p ng-bind-html="textoChamado"></p>
+
+		</div>
+
+	</ion-content>
+</ion-view>

@@ -1,0 +1,25 @@
+<ion-view title="{{appConfig.view_title}}">
+	<ion-pane class="main-ion-pane configuracoes no-padding-content">
+		<ion-content>
+			<h4 class="view-title">Minhas Configurações</h4>
+			<h6>Selecione as configurações que você deseja <span class="activated">habilitar</span> ou <span class="deactivated">desabilitar</span>.</h6>
+
+			<ion-list>
+			 	<ion-item data-ng-repeat="tag in configuracoesCtrl.tags track by $index"
+					class="category-ion-item item slideup delay-{{$index}} fast"
+					ng-click="tag.selected = !tag.selected; configuracoesCtrl.saveTags();">
+					 <span>{{tag.title}}</span>
+					 <span for="{{tag.key}}" class="toggle toggle-positive" onclick="event.stopPropagation(this);">
+					    <input id="{{tag.key}}"
+					    	type="checkbox"
+					    	data-ng-model="tag.selected"
+					    	ng-change="configuracoesCtrl.saveTags()">
+					    <div class="track">
+					        <div class="handle"></div>
+					    </div>
+				     </span>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+	</ion-pane>
+</ion-view>

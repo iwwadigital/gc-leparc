@@ -1,0 +1,65 @@
+<ion-view class="visitantes">
+  <ion-content>
+
+    <div class="container">
+
+      <h4 class="view-title">Novo Visitante</h4>
+
+      <form class="content" name="form">
+        <input required type="text"
+        class="input" placeholder="Nome do Visitante *"
+        ng-model="visitanteNovoCtrl.visitante.nome" name="title"
+        ng-class="{'invalid' : form.title.$invalid && !form.title.$pristine}"/>
+
+        <!-- <input type="tel" ui-br-phone-number
+        class="input" placeholder="Telefone do Visitante"
+        ng-model="visitanteNovoCtrl.visitante.telefone" name="telefone"
+        ng-class="{'invalid' : form.telefone.$invalid && !form.telefone.$pristine}"/>
+
+        <input type="email"
+        class="input" placeholder="E-mail do Visitante"
+        ng-model="visitanteNovoCtrl.visitante.email" name="email"
+        ng-class="{'invalid' : form.email.$invalid && !form.email.$pristine}"/> -->
+
+        <input type="text"
+        class="input" placeholder="Placa do Carro"
+        ng-change="visitanteNovoCtrl.visitante.placa = visitanteNovoCtrl.visitante.placa.toUpperCase()"
+        ng-model="visitanteNovoCtrl.visitante.placa" name="placa" ui-mask-placeholder
+        ng-class="{'invalid' : form.placa.$invalid && !form.placa.$pristine}"/>
+
+        <input type="number"
+        class="input" placeholder="Qtd. de pessoas no carro"
+        ng-model="visitanteNovoCtrl.visitante.qtd_pessoas" name="qtd_pessoas"
+        ng-class="{'invalid' : form.qtd_pessoas.$invalid && !form.qtd_pessoas.$pristine}"/>
+
+        <div class="date-wrapper">
+          <input required type="date"
+          class="input" name="data_visita"
+          ng-model="visitanteNovoCtrl.visitante.data_visita"
+          ng-class="{'invalid' : (form.data_visita.$invalid && !form.data_visita.$pristine)}"/>
+          <span class="label" ng-hide="visitanteNovoCtrl.visitante.data_visita">Data *</span>
+        </div>
+
+        <div class="select-wrapper">
+          <select name="moradia" class="filter input" ng-model="visitanteNovoCtrl.visitante.moradia" ng-options="moradia as moradia.conjunto.titulo + '-' + moradia.identificador for moradia in appCtrl.Session.user.moradias track by moradia.id" required>
+            <option value="" disabled selected>Moradia a ser visitada *</option>
+          </select>
+          <i class="icon ion-arrow-down-b"></i>
+        </div>
+
+        <div class="select-wrapper">
+          <select required class="filter input" ng-model="visitanteNovoCtrl.visitante.descricao">
+            <option disabled value="">Tipo de Visita *</option>
+            <option value="Visitante">Visitante</option>
+            <option value="Prestador de Serviço">Prestador de Serviço</option>
+          </select>
+          <i class="icon ion-arrow-down-b"></i>
+        </div>
+
+        <button class="input-button" ng-class="{'disabled': form.$invalid}" ng-click="visitanteNovoCtrl.salvar()">Salvar</button>
+      </form>
+
+    </div>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,78 @@
+//###########################################################################################################
+// Constants SCSS File
+//
+// - Todas as constantes (Variáveis de cor, tamanho, etc) devem estar preferencialmente
+// listadas aqui com o objetivo de centralizar as localizações, facilitando manutenção
+//
+//###########################################################################################################
+
+$base-color: rgba(#000, 0.8);
+
+$invalid-color: hsl(0, 60%, 50%);
+
+$ease-color: rgba($positive, 0.5);
+
+$status-aberto: $color-primary;
+$status-fechado: #000;
+$status-analise: hsl(200, 60%, 50%);
+$status-processo: $invalid-color;
+$status-cancelado: $invalid-color;
+
+$color-black-dark: rgba(#000, 0.8);
+$color-black-medium: rgba(#000, 0.6);
+$color-black-light: rgba(#000, 0.4);
+
+
+$font-family-custom: 'Roboto', sans-serif;
+$font-family-sans-serif: $font-family-custom;
+$font-family-light-sans-serif: $font-family-custom;
+
+$font-size-base: 16px;
+$font-size-large: 18px;
+$font-size-small: 14px;
+
+$line-height-base: 1.5;
+$line-height: calc(1em + 0.5rem);
+$line-height-large: calc(1em + 0.75rem);
+$line-height-small: calc(1em + 0.25rem);
+
+$content-padding: 16px;
+$padding-base-vertical: 16px;
+$padding-base-horizontal: 16px;
+$padding-large-vertical: 24px;
+$padding-large-horizontal: 24px;
+
+$bar-height: 56px;
+
+$item-font-size: 14px;
+// $item-border-width: 0;
+// $item-padding: 0;
+
+$grid-padding-width: 16px;
+
+$tabs-height: 85px;
+$navbar-height: 56px;
+$bar-height: 56px;
+
+
+$input-height: 3rem;
+$input-height-base: 3rem;
+$input-height-large: 3rem;
+$input-height-small: 3rem;
+
+$button-font-size: 14px;
+$button-border-radius: 2em;
+
+$input-border-radius: 2em;
+$input-margin: 10px;
+$max-width: 400px;
+$search-icon-size: 48px;
+$min-item-height: 72px;
+
+$avatar-size: 44px;
+$avatar-size-small: 32px;
+$avatar-size-micro: 24px;
+
+$item-border: 1px solid rgba($base-color, 0.4);
+$border: 1px solid rgba(#000, 0.15);
+

@@ -1,0 +1,57 @@
+<ion-view class="forum">
+	<ion-content>
+
+		<div class="container">
+
+			<h4 class="view-title">Fórum</h4>
+
+			<a data-ui-sref="app.forum_regras">
+				<h5 class="subtitle">
+					<i class="icon ion-information-circled"></i>
+					Visite as regras do fórum
+				</h5>
+			</a>
+
+			<div class="search-wrapper">
+				<div class="input-box input-box-composite">
+					<i class="icon ion-search"></i>
+					<input type="text"
+					placeholder="Pesquisa de posts no fórum"
+					class="input"
+					name="email"
+					ng-model="filter"
+					ng-init="filter = ''" />
+				</div>
+				<span class="add-icon ion-plus" ui-sref="app.forum_novo_post"></span>
+			</div>
+
+		</div>
+
+		<ion-list>
+			<ion-item ng-repeat="item in vm.forum | filter:filter track by $index" class="category-ion-item item list-item" ui-sref="app.forum_post({id: item.id})">
+				<div class="row">
+					<div class="avatar-wrapper col col-20">
+						<img ng-src="{{item.autor.imagem || appCtrl.appConfig.default_user}}" class="avatar" />
+					</div>
+
+					<div class="info-wrapper col col-80">
+						<span class="post-name">{{item.titulo}}</span>
+						<div>
+							<span class="post-author post-details">{{item.autor.nome.split(' ')[0]}},</span>
+							<span class="post-date post-details">{{item.data_postagem.formatado}}</span>
+							<span class="post-comments post-details" ng-if="item.comentarios.length > 0"> - {{item.comentarios.length}} comentário(s).</span>
+						</div>
+					</div>
+				</div>
+			</ion-item>
+		</ion-list>
+
+		<div class="no-results-found" ng-show="(vm.forum | filter:filter).length == 0 && vm.alreadyLoaded">
+			<i class="ion-sad-outline fadein delay-1"></i>
+			<span class="slideup">Não foram encontrados resultados para o filtro <span class="filter">{{filter}}</span></span>
+		</div>
+
+		<ion-infinite-scroll ng-if="vm.hasMoreItems && filter.length == 0" on-infinite="vm.loadMore()"></ion-infinite-scroll>
+
+</ion-content>
+</ion-view>

@@ -1,0 +1,124 @@
+.agendamentos {
+  .date-wrapper {
+    position: relative;
+    display: flex;
+
+    .label {
+      font-weight: normal;
+      position: absolute;
+      z-index: 9;
+      background: white;
+      top: 35%;
+      transform: translateY(-50%);
+      left: 15px;
+      width: 130px;
+      color: $color-black-medium;
+    }
+  }
+
+  .list-inset {
+    margin: 0;
+    border-radius: 1rem;
+    border: 1px solid rgba(#000, 0.15);
+    overflow: hidden;
+  }
+
+  .item {
+    padding: 0.25rem 0.5rem;
+    border-width: 0;
+    border-top: 1px solid rgba(#000, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-black-medium;
+    font-size: $font-size-small;
+
+    &:first-child {
+      border-top: none;
+    }
+
+    &.confirmado {
+      background-color: rgba($positive, 0.1);
+    }
+
+    .nome {
+      color: $color-primary;
+      margin-bottom: 4px;
+      font-weight: 500;
+      text-transform: uppercase;
+      white-space: normal;
+    }
+
+    .icon {
+      margin-right: 8px;
+      color: $color-black-light;
+    }
+
+    .subitem {
+      margin: 2px 0;
+    }
+
+    .detalhes {
+      color: $color-secondary;
+      .icon {
+        color: inherit;
+      }
+    }
+
+    .option_box {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      .icon-box {
+        height: 48px;
+        width: 48px;
+        background: $color-secondary;
+        color: white;
+        border-radius: 100%;
+        font-size: 1.75em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: 0;
+      }
+    }
+  }
+
+  .label {
+    font-weight: bold;
+  }
+
+  .value {
+    white-space: normal;
+    border-left: 1px solid $color-primary;
+    padding-left: 10px;
+    margin-left: 20px;
+  }
+
+  .cancel-button {
+    margin-top: 20px;
+    background-color: $invalid-color !important;
+  }
+
+  .visitante-confirmado {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    color: white;
+  }
+
+  .to-bottom {
+    padding: 20px 0 !important;
+    background-color: $invalid-color;
+    position: absolute;
+    bottom: 0;
+  }
+
+  a {
+    text-decoration:none;
+    color: $dark;
+  }
+}

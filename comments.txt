@@ -1,0 +1,17 @@
+// Gerar Keystore
+keytool -genkey -v -keystore android.keystore -alias android -keyalg RSA -keysize 2048 -validity 10000
+
+keytool -keystore android.keystore -list -v
+
+// Gerar arquivo
+./platforms/android/release-signing.properties
+// Conteudo do arquivo:
+key.store=../../android.keystore
+key.store.password=iwwa1914
+key.alias.password=iwwa1914
+key.alias=android
+
+// Gerar release
+cordova build --release android
+
+Password: iwwa1914

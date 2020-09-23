@@ -1,0 +1,337 @@
+// Limpar estilos default
+select, input[type='date'], input[type='time'] {
+  appearance: none;
+}
+
+// Form
+// form.ng-invalid:not(.ng-pristine) {
+// 	.input.ng-invalid:not(.ng-pristine) {
+// 		border-color: $invalid-color !important;
+
+// 		&::-webkit-input-placeholder, &, & + .label, & + .icon {
+// 			color: $invalid-color !important;
+// 		}
+// 	}
+// }
+
+//Campo de Seleção de Data e Hora
+.datepicker {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	h6 {
+		color: $color-primary-dark;
+		margin: 0 0 15px 0;
+		font-size: 1em;
+	}
+
+	.input-wrapper {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.date {
+		width: 100%;
+		line-height: $input-height;
+		border: 1px solid rgba($positive, 0.5);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+//add iconbutton
+.add-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+	height: $search-icon-size;
+  width: $search-icon-size;
+  margin-left: 8px;
+	text-align: center;
+	color: white;
+	background-color: $color-primary;
+	border-radius: 50%;
+}
+
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+	width: 100%;
+  margin-bottom: 1rem;
+
+  .input {
+    border: none;
+  }
+}
+
+//Input box
+.input-box {
+	@include border-radius($input-border-radius);
+	@include box-sizing(border-box);
+	@include display-flex;
+	@include align-items(center);
+
+	background-color: white;
+	border: none;
+	height: $input-height;
+	color: $color-primary;
+	max-width: $max-width;
+	width: 100%;
+	border: $border;
+
+	.input {
+		flex-grow: 1;
+		height: auto;
+		background-color: white;
+    margin: 0;
+    border: none;
+	}
+
+	.icon {
+		flex-shrink: 0;
+		fill: currentColor;
+		margin-left: 1rem;
+	}
+}
+
+// Input
+textarea,
+input:not([type]),
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+button {
+	@extend input[type="text"];
+	width: 100%;
+	height: $input-height;
+	padding: 0.25rem 1rem;
+	background-color: white;
+	color: $color-black-dark;
+	border: $border;
+	margin-bottom: 1rem;
+	display: flex;
+	align-items: center;
+	border-radius: $input-border-radius;
+}
+
+.input::placeholder {
+	color: $color-black-medium;
+	opacity: 1;
+}
+
+button {
+  width: auto;
+  height: auto;
+	min-height: $input-height;
+  background: $color-primary;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  border: none;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  margin: 0;
+  font-weight: 500;
+
+  &:active {
+    background: $color-primary-dark;
+  }
+
+  &[disabled],
+  &.disabled {
+    background: rgba(#000, 0.4);
+  }
+
+  &.button-secondary {
+    background: $color-secondary;
+
+    &:active {
+      background: $color-secondary-dark;
+    }
+  }
+
+  .icon {
+    margin-right: 0.5rem;
+    font-size: 1.5em;
+  }
+}
+
+.input-button {
+  width: 100%;
+}
+
+
+select {
+  @extend input[type="text"];
+  margin-bottom: 0;
+}
+
+//TextArea
+textarea {
+	resize: none;
+	border-radius: 1em;
+	height: 96px;
+	padding: 0.75rem 1rem;
+}
+
+//Switch
+.switch {
+  margin-bottom: 1rem;
+	border-radius: $input-border-radius;
+	height: $input-height;
+  border: 1px solid rgba(#000, 0.1);
+
+  &.row {
+    padding: 0;
+  }
+
+	&-item {
+		display: flex;
+		align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    line-height: 1rem;
+		color: $color-secondary;
+    background-color: #fff;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 200ms ease;
+
+		&:first-child {
+			border-top-left-radius: 2em;
+			border-bottom-left-radius: 2em;
+		}
+		&:last-child {
+			border-top-right-radius: 2em;
+			border-bottom-right-radius: 2em;
+		}
+	}
+
+	.active {
+		color: $color-primary;
+		background-color: #fff;
+		box-shadow: rgba(#000, 0.2) 0 2px 6px inset
+	}
+
+	.icon {
+		margin-right: 0.5rem;
+	}
+}
+
+//Select Icon
+.select-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+
+	.icon {
+		position: absolute;
+    right: 1rem;
+    top: 50%;
+		color: $color-primary;
+    transform: translateY(-50%);
+    pointer-events: none;
+	}
+}
+
+//filter wrapper
+.filter-wrapper {
+	.filter {
+		height: auto !important;
+	}
+}
+
+//Upload
+.upload {
+	$add-size: 30px;
+
+	.wrapper {
+		margin: 0 0 1rem;
+		padding: 1rem 0;
+		height: $add-size;
+		line-height: $add-size;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.add-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+		height: $add-size;
+		width: $add-size;
+		border-radius: 100%;
+		text-align: center;
+		background-color: $color-primary;
+		color: white;
+		margin-left: 5px;
+
+		&-disabled {
+			background-color: rgba(gray, 0.9) !important;
+		}
+	}
+
+	.label {
+		color: $color-primary;
+		margin-left: 5px;
+
+		&-disabled {
+			color: rgba(gray, 0.9) !important;
+		}
+	}
+
+	.image-container {
+		$radius: 5px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+
+		.image-wrapper {
+			width: 100px;
+			max-height: 150px;
+			overflow: hidden;
+			margin: 1%;
+			position: relative;
+			border-radius: $radius;
+		}
+
+		.image-preview {
+			width: 100%;
+		}
+
+		.image-remove {
+			$remove-size: 32px;
+			width: $remove-size;
+			height: $remove-size;
+			line-height: $remove-size;
+			border-bottom-left-radius: $radius;
+			border-top-right-radius: $radius;
+			text-align: center;
+			position: absolute;
+			background-color: $color-primary;
+			color: white;
+			top: 0;
+			right: 0;
+		}
+	}
+}

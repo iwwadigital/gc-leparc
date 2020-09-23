@@ -1,0 +1,36 @@
+<ion-view class="classificados">
+	<ion-content>
+
+		<div class="container">
+
+			<h4 class="view-title">{{vm.title}}</h4>
+
+			<div class="search-wrapper" ng-if="!vm.hasUserId">
+				<search dataset="vm.categorias" datamodel="filter" father='vm'></search>
+				<span class="add-icon ion-plus" data-ui-sref="app.classificado_novo"></span>
+      </div>
+
+			<div class="search-wrapper" ng-if="vm.hasUserId">
+        <button class="input input-button" ui-sref="app.classificado_novo">
+          Novo Classificado
+        </button>
+      </div>
+
+			<div class="grid grid-cards">
+				<div class="grid--cell" data-cell-tablet="3" ng-repeat="item in vm.classificados track by $index">
+					<card-2rows-2cols content="item" count="$index" user="appCtrl.appConfig.default_user" post-default="appCtrl.appConfig.default_post">
+					</card-2rows-2cols>
+				</div>
+			</div>
+
+			<div class="no-results-found" ng-show="vm.classificados.length == 0 && vm.alreadyLoaded">
+        <div class="fadein" ng-include="'templates/includes/icon-list-empty.svg'"></div>
+				<span class="slideup">Não foram encontrados resultados</span>
+			</div>
+
+		</div>
+
+		<ion-infinite-scroll ng-if="vm.hasMoreItems" on-infinite="vm.loadMore()"></ion-infinite-scroll>
+
+	</ion-content>
+</ion-view>

@@ -1,0 +1,17 @@
+<ion-view class="editar-perfil">
+  <ion-content>
+    <div class="container">
+      <h4 class="view-title">Editar Perfil</h4>
+      <form name="form">
+        <input type="email" class="input" placeholder="E-mail" name="email"
+        ng-model="editarPerfilCtrl.user.email"
+        ng-class="{'invalid' : form.email.$invalid && !form.email.$pristine}" required>
+        <input type="tel" class="input" placeholder="Telefone" name="tel"
+        ng-model="editarPerfilCtrl.user.telefone"
+        ng-class="{'invalid' : form.tel.$invalid && !form.tel.$pristine}"
+        ui-br-phone-number required>
+        <button class="input input-button validated-button" ng-disabled="form.$invalid" ng-click="editarPerfilCtrl.updateUser()">Salvar</button>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

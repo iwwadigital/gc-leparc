@@ -1,0 +1,49 @@
+<ion-view class="single informacao">
+	<ion-content>
+
+		<div class="info">
+			<h3 class="view-title">{{vm.informacao.titulo}}</h3>
+			<div class="details">
+				<span ng-if="vm.informacao">
+					<img ng-src="{{vm.informacao.autor.imagem || appCtrl.appConfig.default_user}}">
+					<span class="author">{{vm.informacao.autor.nome.split(" ")[0]}}</span>
+				</span>
+
+				<span ng-if="vm.informacao.tipo_post" class="post_type">
+					<i class="icon ion-android-document"></i>
+					<span>{{vm.informacao.tipo_post.titulo}}</span>
+				</span>
+			</div>
+		</div>
+
+		<div class="top" ng-if="vm.slides.length">
+	 		<ion-slide-box class="slider" slide-interval="4000" does-continue="true" auto-play="true">
+        <ion-slide class="slide" ng-repeat="foto in vm.slides track by $index" style="background-image: url({{foto || appCtrl.appConfig.default_post}});"></ion-slide>
+			</ion-slide-box>
+		</div>
+
+		<!-- Default -->
+		<div class="destaque" ng-if="!vm.slides.length && vm.informacao">
+			<img src="{{vm.informacao.imagem_destacada || appCtrl.appConfig.default_post}}">
+		</div>
+
+		<div class="container">
+			<div class="content" ng-bind-html="vm.informacao.conteudo"></div>
+
+			<div class="anexos" ng-if="vm.anexos.length">
+				<ion-list>
+					<ion-item ng-repeat="anexo in vm.anexos track by $index" class="item"
+						ng-click="appCtrl.openBrowser(anexo.arquivo)">
+						<a class="download">
+							<i class="icon ion-ios-cloud-download"></i>
+							<span class="title">{{anexo.descricao}}</span>
+						</a>
+					</ion-item>
+				</ion-list>
+			</div>
+		</div>
+
+		<ion-infinite-scroll ng-if="vm.hasMoreItems" on-infinite="vm.getInformacao()"></ion-infinite-scroll>
+
+	</ion-content>
+</ion-view>

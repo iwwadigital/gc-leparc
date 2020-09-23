@@ -1,0 +1,22 @@
+<a ui-sref="{{content.sref}}">
+	<div class="card">
+		<div class="item item-image">
+			<img ng-src="{{content.imagem_destacada || imageDefault}}">
+		</div>
+		<div class="item bottom">
+			<div class="description">
+				<p class="title">{{content.titulo}}</p>
+				<div class="categories">
+					<span class="subitem category date">
+						<i class="icon ion-android-calendar" ng-if="content.data_postagem"></i>
+						{{content.data_postagem.timestamp | date:'dd/MM/yy'}}
+					</span>
+					<span class="subitem category" ng-if="content.tipo_post">
+						<i class="icon ion-android-clipboard"></i>
+						{{content.tipo_post.titulo}}
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</a>

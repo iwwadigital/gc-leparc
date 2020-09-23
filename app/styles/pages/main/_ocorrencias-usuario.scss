@@ -1,0 +1,46 @@
+.ocorrencias-usuario {
+	.item-content.activated {
+		background-color: #fff;
+		border-color: #fff;
+  }
+
+  .item {
+    color: $color-black-medium;
+  }
+
+  .title {
+    margin-bottom: 4px;
+    font-weight: 500;
+    font-size: $font-size-small;
+    color: $color-primary;
+    text-transform: uppercase;
+    white-space: normal;
+    line-height: $line-height;
+  }
+
+  .subitem {
+    margin: 2px 0;
+  }
+
+  .status {
+    text-transform: uppercase;
+    font-size: $font-size-small;
+    &-aberto {
+      color: $status-aberto;
+    }
+    &-fechado {
+      color: $status-fechado;
+    }
+    &-analise {
+      color: $status-analise;
+    }
+    &-processo {
+      color: $status-processo;
+    }
+  }
+
+  .icon {
+    margin-right: 8px;
+    color: $color-black-light;
+  }
+}

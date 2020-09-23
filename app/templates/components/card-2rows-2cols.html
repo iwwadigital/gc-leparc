@@ -1,0 +1,29 @@
+<a ui-sref="app.classificado({id: content.id})">
+	<div class="card card-2col">
+		<div class="item item-image">
+      <img ng-src="{{content.imagem_destacada || postDefault}}">
+    </div>
+    <div class="item bottom">
+			<div class="avatar-wrapper">
+				<img ng-src="{{content.autor.imagem || user}}" class="fadein delay-{{1 + count}} avatar">
+			</div>
+			<div class="description">
+				<span class="title">{{content.titulo}}</span>
+				<div class="categories">
+					<span class="subitem date category" ng-if="content.data_postagem">
+						<i class="icon ion-android-calendar"></i>
+						{{content.data_postagem.timestamp | date:'dd/MM/yy'}}
+					</span>
+					<span class="subitem category" ng-if="content.tipo_post.titulo">
+						<i class="icon ion-android-clipboard"></i>
+						{{content.tipo_post.titulo}}
+					</span>
+					<span class="subitem category" ng-if="content.preco">
+						<!-- <i class="icon ion-cash"></i> -->
+						<b>R$</b>&nbsp;{{content.preco | currency:'':0}}
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</a>

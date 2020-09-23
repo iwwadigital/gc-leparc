@@ -1,0 +1,11 @@
+<div class="opcoes">
+	<div data-ng-repeat="item in set | filter:{habilitado:true} track by $index" class="nav-card" ng-if="item.habilitado">
+		{{item.click}}
+		<a class="opcao-wrapper" data-ui-sref="{{item.sref}}" ng-click="item.click()">
+			<span class="opcao fadein delay-{{$index}} fast">
+				<i class="{{item.icon}}"></i>
+			</span>
+			<span class="label slideup delay-{{$index}}">{{item.title}}</span>
+		</a>
+	</div>
+</div>

@@ -1,0 +1,40 @@
+.telefones_uteis {
+
+	.switch {
+		min-width: 100%;
+	}
+
+	.box {
+		display: flex;
+    flex-direction: column;
+		width: 100%;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0;
+    background: #fff;
+    border-color: rgba(#000, 0.15);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 1rem;
+	}
+
+  .destaque,
+  .line {
+		color: $color-black-medium;
+		font-size: $font-size-small;
+		line-height: $line-height;
+    padding: 0.25rem 1rem;
+  }
+
+  .destaque {
+    font-weight: 500;
+  }
+
+	.line {
+		color: $color-black-medium;
+		line-height: $line-height-small;
+    .icon {
+		  margin-right: 0.5rem;
+      color: $color-black-light;
+    }
+	}
+}
