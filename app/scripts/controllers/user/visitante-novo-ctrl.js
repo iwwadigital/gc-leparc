@@ -1,16 +1,39 @@
 (function() {
 	'use strict';
 	app.controller('VisitanteNovoController', [
+		'$scope',
 		'$state',
 		'Session',
 		'$ionicHistory',
 		'VisitanteService',
 		'$stateParams',
 		'ToasterService',
-		function($state, Session, $ionicHistory, VisitanteService, $stateParams, ToasterService) {
+		function($scope,$state, Session, $ionicHistory, VisitanteService, $stateParams, ToasterService) {
 			var vm = this;
 			vm.visitante = {};
+			var date = new Date();
+			var months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+			var daysOfTheWeek = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
+			$scope.onezoneDatepicker = {
+				date: date, // MANDATORY            
+				startDate : date,         
+				mondayFirst: false,                              
+				disablePastDays: false,
+				months: months, 
+				daysOfTheWeek: daysOfTheWeek,
+				disableSwipe: false,
+				disableWeekend: false,
+				showDatepicker: false,
+				showTodayButton: true,
+				calendarMode: false,
+				hideCancelButton: false,
+				hideSetButton: false,
+				callback: function(value){
+					// your code
+				}
+			};
 
+			
 			// vm.terminoHasChanged = function() {
 			// 	let inicio = vm.visitante.data_visita;
 			// 	let fim = vm.visitante.data_visita_termino || vm.visitante.data_visita;
@@ -31,6 +54,9 @@
 
 			vm.validate = function() {
 				var error = false;
+				if($scope.onezoneDatepicker.date != null || $scope.onezoneDatepicker.date != undefined || $scope.onezoneDatepicker.date != ''){
+					vm.visitante.data_visita = $scope.onezoneDatepicker.date;
+				}
 
 				if (!vm.visitante.nome)
 					error = "O campo nome é obrigatório";
@@ -70,7 +96,6 @@
 					data_visita: now(vm.visitante.data_visita),
 					data_visita_termino: now(vm.visitante.data_visita_termino || vm.visitante.data_visita),
 				};
-
 				if (vm.visitante.id)
 					data['id'] = vm.visitante.id
 

@@ -30,11 +30,18 @@
 				<div class="datepicker">
 					<h6>Data e Hora da Ocorrência</h6>
 
-					<div class="input-wrapper">
+					<!-- <div class="input-wrapper">
 						<input type="datetime-local" ng-model="vm.ocorrencia.data" class="input date" step="60">
-					</div>
+					</div> -->
+					<onezone-datepicker datepicker-object="onezoneDatepicker" >
+						<button name="data_visita" class="button button-block button-outline button-positive show-onezone-datepicker">
+							{{onezoneDatepicker.date | date:'dd/mm/yyyy'}} 
+						</button>
+					</onezone-datepicker>
 				</div>
-
+				<input type="text"
+				class="input" 
+				ng-model="vm.ocorrencia.hora" name="placa" ui-mask="99:99" required/>
 				<textarea class="input textarea" ng-model="vm.ocorrencia.descricao" placeholder="Descrição do ocorrido" required></textarea>
 
 				<div class="upload">

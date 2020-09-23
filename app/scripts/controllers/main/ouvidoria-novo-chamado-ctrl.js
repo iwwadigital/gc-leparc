@@ -1,8 +1,27 @@
 (function () {
-  app.controller('OuvidoriaNovoChamadoController', [
+  app.controller('OuvidoriaNovoChamadoController', ['$scope',
     'OuvidoriaService', '$ionicHistory', 'Session', '$cordovaCamera', 'ToasterService', 'appConfig', '$ionicActionSheet',
-    function (OuvidoriaService, $ionicHistory, Session, $cordovaCamera, ToasterService, appConfig, $ionicActionSheet) {
+    function ($scope,OuvidoriaService, $ionicHistory, Session, $cordovaCamera, ToasterService, appConfig, $ionicActionSheet) {
       var vm = this;
+      var date = new Date();
+			var months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+      var daysOfTheWeek = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'];
+      
+			$scope.onezoneDatepicker = {
+				date: date, // MANDATORY            
+				mondayFirst: false,                              
+				disablePastDays: false,
+				months: months, 
+				daysOfTheWeek: daysOfTheWeek,
+				disableSwipe: false,
+				disableWeekend: false,
+				showDatepicker: false,
+				showTodayButton: true,
+				calendarMode: false,
+				hideCancelButton: false,
+				hideSetButton: false
+			};
+
 
       vm.ocorrencia = {
         images: [],
@@ -61,12 +80,23 @@
           }
         });
       };
-
+      String.prototype.insert_index = function(idx, rem, str) {
+        return this.slice(0, idx) + str + this.slice(idx + Math.abs(rem));
+    };
       vm.deselect = index => {
         vm.ocorrencia.images.splice(index, 1);
       };
 
       vm.createOcorrencia = () => {
+        if($scope.onezoneDatepicker.date != null || $scope.onezoneDatepicker.date != undefined || $scope.onezoneDatepicker.date != ''){
+          vm.ocorrencia.data = now($scope.onezoneDatepicker.date);
+          if(vm.ocorrencia.hora != undefined && vm.ocorrencia.hora != null){
+
+            vm.ocorrencia.data = vm.ocorrencia.data+" "+vm.ocorrencia.hora.insert_index(2,0,":");
+          }
+        }
+        console.log(vm.ocorrencia);
+        return;
         OuvidoriaService.createOcorrencia(vm.ocorrencia).then(response => {
           $ionicHistory.goBack();
         });

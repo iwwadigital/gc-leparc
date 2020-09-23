@@ -33,11 +33,16 @@
         ng-class="{'invalid' : form.qtd_pessoas.$invalid && !form.qtd_pessoas.$pristine}"/>
 
         <div class="date-wrapper">
-          <input required type="date"
+          <onezone-datepicker datepicker-object="onezoneDatepicker" >
+            <button name="data_visita" class="button button-block button-outline button-positive show-onezone-datepicker">
+                {{onezoneDatepicker.date | date:'dd/mm/yyyy'}} 
+            </button>
+        </onezone-datepicker>
+          <!-- <input required type="date"
           class="input" name="data_visita"
           ng-model="visitanteNovoCtrl.visitante.data_visita"
           ng-class="{'invalid' : (form.data_visita.$invalid && !form.data_visita.$pristine)}"/>
-          <span class="label" ng-hide="visitanteNovoCtrl.visitante.data_visita">Data *</span>
+          <span class="label" ng-hide="visitanteNovoCtrl.visitante.data_visita">Data *</span> -->
         </div>
 
         <div class="select-wrapper">

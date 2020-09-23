@@ -15,7 +15,7 @@
 			});
 
 			vm.deletar = function() {
-        console.log('Deletar visitante');
+				console.log('Deletar visitante');
 				if (navigator && navigator.notification) {
 					navigator.notification.confirm(
 						'Você tem certeza que deseja deletar a visita de ' + vm.visitante.nome + '?',
