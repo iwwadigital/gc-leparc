@@ -95,8 +95,6 @@
             vm.ocorrencia.data = vm.ocorrencia.data+" "+vm.ocorrencia.hora.insert_index(2,0,":");
           }
         }
-        console.log(vm.ocorrencia);
-        return;
         OuvidoriaService.createOcorrencia(vm.ocorrencia).then(response => {
           $ionicHistory.goBack();
         });
