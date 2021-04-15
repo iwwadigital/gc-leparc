@@ -15,3 +15,10 @@ key.alias=android
 cordova build --release android
 
 Password: iwwa1914
+
+
+// Para rodar o gulp precisa ter um node 8
+// build
+gulp 
+// Rodar o servidor
+gulp server 
