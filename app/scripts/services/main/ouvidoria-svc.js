@@ -51,7 +51,7 @@
 						empreendimento_id: ocorrencia.empreendimento_id,
 						images: ocorrencia.images
 					}
-				}, 'Não foi possível cadastrar a ocorrência', 'Ocorrência cadastrada com sucesso');
+				}, 'Não foi possível cadastrar a ocorrência', `Sua ocorrência foi enviada e que tem um prazo de ${Session.config.dias_envio_ocorrencia} dias para ser respondida`);
 			}
 
 			function atualizarOcorrencia(ocorrencia) {
@@ -75,10 +75,14 @@
 				}, 'Não foi cadastrar a ocorrência', 'Ocorrência cadastrada com sucesso');
 			}
 
-			function getOcorrencias() {
+			function getOcorrencias(status = null) {
+				let search = "";
+				if(status){
+					search = `&status=${status}`;
+				}
 				return AjaxService.request({
 					method: 'GET',
-					url: apiURL + 'chamado?usuario=' + Session.user.id
+					url: apiURL + 'chamado?usuario=' + Session.user.id+search
 				}, 'Não foi possível recuperar as ocorrências');
 			}
 

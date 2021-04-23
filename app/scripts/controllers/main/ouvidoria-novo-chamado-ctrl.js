@@ -88,14 +88,15 @@
       };
 
       vm.createOcorrencia = () => {
-        if($scope.onezoneDatepicker.date != null || $scope.onezoneDatepicker.date != undefined || $scope.onezoneDatepicker.date != ''){
-          vm.ocorrencia.data = now($scope.onezoneDatepicker.date);
-          if(vm.ocorrencia.hora != undefined && vm.ocorrencia.hora != null){
+        // if($scope.onezoneDatepicker.date != null || $scope.onezoneDatepicker.date != undefined || $scope.onezoneDatepicker.date != ''){
+        //   vm.ocorrencia.data = now($scope.onezoneDatepicker.date);
+        //   if(vm.ocorrencia.hora != undefined && vm.ocorrencia.hora != null){
 
-            vm.ocorrencia.data = vm.ocorrencia.data+" "+vm.ocorrencia.hora.insert_index(2,0,":");
-          }
-        }
+        //     vm.ocorrencia.data = vm.ocorrencia.data+" "+vm.ocorrencia.hora.insert_index(2,0,":");
+        //   }
+        // }
         OuvidoriaService.createOcorrencia(vm.ocorrencia).then(response => {
+          ToasterService.show('O número máximo de fotos foi atingido');
           $ionicHistory.goBack();
         });
       };

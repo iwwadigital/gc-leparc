@@ -32,7 +32,6 @@
       if (LocalStorageService.getAll()) {
         PerfilService.getUserUpdatedData().then(response => {
           let user = response.data.usuario;
-
           if (user.imagem) {
             Session.user.imagem = url + '/' + user.imagem;
           }
@@ -43,6 +42,8 @@
           Session.user.permissoes_usuario = user.permissoes_usuario;
 
           LocalStorageService.storeUser();
+
+          
         });
       }
 
@@ -69,6 +70,10 @@
       // carregando configuracoes
       configSvc.applyConfigurations();
       configSvc.verifyCompatibility();
+
+      configSvc.getConfiguracaoSvc().then((response) => {
+        Session.config = response.data.configuracoes;
+      });
 
     }
   ]);

@@ -10,23 +10,33 @@
 				</div>
 				<span class="add-icon ion-plus" data-ui-sref="app.ocorrencia_nova"></span>
 			</div>
+			<div class="wrapper">
+				<i class="icon-select ion-arrow-down-b" ng-init="show_search = true"></i>
+				<div class="filter-wrapper">
+					<select name="search" id="search" ng-model="vm.filter_status" class="filter" ng-change="vm.onChange()">
+						<option value="" selected>Todas  os status</option>
+						<option ng-repeat="search in vm.status" value="{{search.id}}">{{search.titulo}}</option>
+					</select>
+				</div>
+			</div>
+			
 
 			<div class="list list-inset" ng-if="vm.chamados.length">
 				<div class="item" ui-sref="app.ocorrencia_usuario({id: chamado.id})" ng-repeat="chamado in vm.chamados | filter:filter">
-          <div class="title">{{chamado.titulo}}</div>
-          <div class="subitem">
-            <i class="icon ion-android-calendar"></i>
-            {{chamado.data_aberto.timestamp | date:'dd/MM/yy - HH:MM'}}
-          </div>
-          <div class="subitem status status-{{chamado.status}}">
-            <i class="icon ion-android-alert"></i>
-            {{chamado.status}}
-          </div>
+					<div class="title">{{chamado.titulo}}</div>
+					<div class="subitem">
+						<i class="icon ion-android-calendar"></i>
+						{{chamado.data_aberto.timestamp | date:'dd/MM/yy - HH:MM'}}
+					</div>
+					<div class="subitem status status-{{chamado.status}}">
+						<i class="icon ion-android-alert"></i>
+						{{chamado.status}}
+					</div>
 				</div>
 			</div>
 
 			<div class="no-results-found" ng-show="!vm.chamados.length && vm.alreadyLoaded">
-        <div class="fadein" ng-include="'templates/includes/icon-list-empty.svg'"></div>
+        		<div class="fadein" ng-include="'templates/includes/icon-list-empty.svg'"></div>
 				<span class="slideup">Não foram encontrados resultados</span>
 			</div>
 

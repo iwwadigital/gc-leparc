@@ -2,7 +2,7 @@
 	<i class="icon-select ion-arrow-down-b" ng-init="show_search = true" ng-click="show_search = !show_search"></i>
 	<div class="filter-wrapper">
 		<select name="search" id="search" ng-model="datamodel" class="filter">
-			<option value="" selected>Todas as categorias {{dataset[0].category}}</option>
+			<option value="" selected>Todas  {{!dataset[0].is_status ?  'as categorias' : 'os status' }} {{dataset[0].category}}</option>
 			<option ng-repeat="search in dataset" value="{{search.id}}">{{search.titulo}}</option>
 		</select>
 	</div>

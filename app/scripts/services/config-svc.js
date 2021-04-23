@@ -2,7 +2,9 @@
 	'use strict';
 	app.service('ConfigurationsService', [
 		'$window',
-		function($window) {
+		'AjaxService',
+		'Session',
+		function($window,AjaxService,Session) {
 			var view = angular.element(document.querySelector('ion-nav-view'));
 
 			var getConfigurationsList = function() {
@@ -63,12 +65,20 @@
 				return configurations;
 			};
 
+			var getConfiguracaoSvc = function() {
+				return AjaxService.request({
+					method: 'GET',
+					url: apiURL + 'configuracao?empreendimento='+Session.empreendimento.id
+				}, 'Não foi possível recuperar as configurações');
+			};
+
 			return {
 				getConfigurationsList: getConfigurationsList,
 				applyConfigurations: applyConfigurations,
 				changeConfigurations: changeConfigurations,
 				getConfigurations: getConfigurations,
-				verifyCompatibility: verifyCompatibility
+				verifyCompatibility: verifyCompatibility,
+				getConfiguracaoSvc : getConfiguracaoSvc
 			};
 		}
 	]);

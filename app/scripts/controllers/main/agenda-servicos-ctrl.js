@@ -10,15 +10,15 @@
 			vm.horarioSelecionado = {};
 			vm.getDependencias = getDependencias;
 			$scope.onezoneDatepicker = {
-				date: '',
+				date: new Date(),
 				showDatepicker: true,				
 				mondayFirst: true,
 				calendarMode: true,
 				disablePastDays: true,
 				months : ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
 				daysOfTheWeek : ['Do','Seg','Ter','Quar','Qui','Sex','Sáb'],
-			    callback: (t) => {			    	
-			      vm.getHorariosDisponiveis(t);
+			    callback: (t) => {	
+			      	vm.getHorariosDisponiveis(now(t,false),true);
 			    }
 			};
 
@@ -38,26 +38,23 @@
 			}
 
 			vm.enviarSolicitacao = function() {	
-				
 		        AgendamentosService.enviarSolicitacaoDeAgendamento(vm.agendamento)
 		        .then( response => {
-		        			if(response.data.success){
-								$ionicHistory.goBack();
-		        			}
-						});
+					if(response.data.success){
+						$ionicHistory.goBack();
+					}
+				});
 			};
 
 			vm.resetHorarios = function() {
 				vm.getHorariosDisponiveis(now(new Date(), false),'true');			
 				vm.horariosDisponiveis = [];
-				
 			}
 
 			vm.getHorariosDisponiveis = function(data,showHours) {
 				AgendamentosService.getDependenciaHorarios(vm.agendamento.dependencia.id, data, showHours)
         		.then( response => {
         			vm.horariosDisponiveis = response.data.data;
-        			
 				});
 					
 			};

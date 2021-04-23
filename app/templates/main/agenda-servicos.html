@@ -33,11 +33,10 @@
         </div>
 
         <div class="select-wrapper fadein" ng-if="agendaCtrl.horariosDisponiveis.length">
-        <ion-list >
-          <ion-radio required  ng-model="agendaCtrl.agendamento.datas" ng-repeat="(key, horario) in agendaCtrl.horariosDisponiveis" ng-disabled="horario.naoDiponivel"  ng-value="{{horario}}"  >{{horario.horario}}</ion-radio>
-            
-        </ion-list>
-</div>
+            <ion-list >
+                <ion-radio required  ng-model="agendaCtrl.agendamento.datas" ng-repeat="(key, horario) in agendaCtrl.horariosDisponiveis" ng-disabled="horario.naoDiponivel"  ng-value="{{horario}}"  >{{horario.horario}}</ion-radio>
+            </ion-list>
+        </div>
 
         <div class="datepicker" ng-if="agendaCtrl.agendamento.dependencia">
            <!--   <div class="input-wrapper">

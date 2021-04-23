@@ -56,7 +56,7 @@
 			var enviarSolicitacaoDeAgendamento = function(agendamento) {
 				return AjaxService.request({
 					method: 'POST',
-					url: apiURL + 'agendamento',
+					url: apiURL + 'agendamento?empreendimento='+Session.empreendimento.id,
 					data: {
 						dependencia_id: agendamento.dependencia.id,
 						moradia_id: agendamento.moradia.id,
@@ -68,7 +68,7 @@
 
 						agendamento_status_id: 2
 					}
-				});
+				},"Não foi possivel enviar sua solicitação de agendamento.",`Este é um pré agendamento, o retorno será dado em ${Session.config.horas_agendamento} horas.`);
 			}
 
 			return {
