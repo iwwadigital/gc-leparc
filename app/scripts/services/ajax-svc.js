@@ -32,7 +32,7 @@
 					return response;
 				})
 				.error( error => {
-					if (error.error === 'token_not_provided' || error.error === 'token_invalid' || error.error === 'token_expired') {
+					if (error && error.error === 'token_not_provided' || error && error.error === 'token_invalid' || error && error.error === 'token_expired') {
 						ToasterService.show('Houve algum problema na validação de seu Token. Por favor, realize login e tente novamente!',duration);
 						$state.go('login');
 						return;

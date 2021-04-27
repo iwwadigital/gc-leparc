@@ -1,7 +1,7 @@
 (function () {
   app.controller('LoginController', [
-    '$state', 'LoginService', 'ToasterService', 'Session', 'LocalStorageService', 'PerfilService', 'NotificacoesService', 'LoaderService', '$ionicHistory',
-    function ($state, LoginService, ToasterService, Session, LocalStorageService, PerfilService, NotificacoesService, LoaderService, $ionicHistory) {
+    '$state', 'LoginService', 'ToasterService', 'Session', 'LocalStorageService', 'PerfilService', 'NotificacoesService', 'LoaderService', '$ionicHistory','ConfigurationsService',
+    function ($state, LoginService, ToasterService, Session, LocalStorageService, PerfilService, NotificacoesService, LoaderService, $ionicHistory,configSvc) {
       if ($state.current.name == 'login') {
         $ionicHistory.clearHistory();
       }
@@ -66,6 +66,10 @@
                 disableBack: true,
                 historyRoot: true
               });
+              configSvc.getConfiguracaoSvc().then((response) => {
+                Session.config = response.data.configuracoes;
+              });
+
               $state.go('app.home');
             } else {
               ToasterService.show('Não foi possível autenticar usuário em empreendimento');
