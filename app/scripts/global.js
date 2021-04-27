@@ -3,8 +3,8 @@ var app = angular.module('app', ['ionic', 'ngCordova', 'OneSignal', 'ui.utils.ma
 // var social = angular.module('socialSharing', []);
 
 // App Base Urls
-// var url = 'http://sistema.globalcond.com.br';
-var url = 'http://sistema.globalcond.iwwadigital.com.br';
+var url = 'http://sistema.globalcond.com.br';
+// var url = 'http://sistema.globalcond.iwwadigital.com.br';
 var apiURL = url + '/api/v1/';
 
 // Date now function

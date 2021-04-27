@@ -70,10 +70,11 @@
       // carregando configuracoes
       configSvc.applyConfigurations();
       configSvc.verifyCompatibility();
-
-      configSvc.getConfiguracaoSvc().then((response) => {
-        Session.config = response.data.configuracoes;
-      });
+      if(Session && Session.empreendimento && Session.empreendimento.id){
+        configSvc.getConfiguracaoSvc().then((response) => {
+          Session.config = response.data.configuracoes;
+        });
+      }
 
     }
   ]);
